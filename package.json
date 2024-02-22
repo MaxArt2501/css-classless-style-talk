@@ -1,0 +1,32 @@
+{
+  "name": "css-unclassed-style-talk",
+  "version": "0.1.0",
+  "description": "Without class but with style",
+  "type": "module",
+  "scripts": {
+    "build": "node build.js",
+    "clean": "rimraf public",
+    "start": "node serve.js",
+    "gh-pages": "gh-pages -d public"
+  },
+  "keywords": [
+    "presentation",
+    "frontend"
+  ],
+  "author": {
+    "name": "Massimo Artizzu",
+    "email": "maxart.x@gmail.com"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "p-slides": "^0.1.0",
+    "prismjs": "^1.16.0"
+  },
+  "devDependencies": {
+    "browser-sync": "^3.0.2",
+    "gh-pages": "^6.1.1",
+    "glob": "^10.3.10",
+    "rimraf": "^5.0.5",
+    "sass": "1.70"
+  }
+}
