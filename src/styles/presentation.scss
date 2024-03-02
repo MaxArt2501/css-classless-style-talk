@@ -1,6 +1,7 @@
 @import 'core/typography.scss';
 @import 'core/utility.scss';
 @import 'core/scaffold.scss';
+@import 'modules/specific.scss';
 
 @property --sketchy-arrow-width {
   syntax: '<length>';
@@ -57,7 +58,8 @@ p-deck::after {
   font-size: 50%;
   text-align: center;
   content: '@MaxArt2501';
-  color: #001236;
+  color: white;
+  mix-blend-mode: difference;
   z-index: 100;
 }
 

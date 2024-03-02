@@ -73,7 +73,7 @@ deck.addEventListener('p-slides.slidechange', ({ detail: { slide } }) => {
 
   toggleNavButtons();
   setTimeout(() => {
-    deck.style.setProperty('--current-slide-bg', getComputedStyle(slide).backgroundColor);
+    deck.style.setProperty('--current-slide-bg', getComputedStyle(slide).getPropertyValue('--slide-bg'));
   });
 });
 deck.addEventListener('p-slides.fragmenttoggle', toggleNavButtons);
