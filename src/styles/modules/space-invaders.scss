@@ -1,0 +1,180 @@
+@property --step-duration {
+  syntax: '<time>';
+  inherits: true;
+  initial-value: 1s;
+}
+
+.space-invaders {
+  --slide-bg: linear-gradient(to bottom, #2a2139 75%, #34294f);
+  --display-color: color-mix(in lab, white 30%, var(--brand-color));
+  --step-duration: 0.5s;
+  --pixel-size: 0.1em;
+  --horizontal-pixel-shift: 10;
+  --vertical-pixel-shift: 10;
+  --enemies-per-line: 12;
+  --pixel-glow: 1;
+
+  // background: color-mix(in srgb, currentColor 10%, black) linear-gradient(to right, color-mix(in srgb, var(--display-color), transparent 80%) 1px, transparent 0) calc(50% - var(--pixel-size) / 2) 0/var(--pixel-size);
+  color: var(--display-color);
+  display: grid;
+  align-content: start;
+  grid-template-columns: repeat(var(--enemies-per-line), min-content);
+  gap: calc(var(--pixel-size) * 4) calc(var(--pixel-size) * 2);
+  justify-content: center;
+
+  svg {
+    width: calc(var(--pixel-size) * 12);
+    height: calc(var(--pixel-size) * 8);
+    fill: currentColor;
+    position: relative;
+    left: calc(var(--pixel-size) * var(--horizontal-pixel-shift) * -1);
+    filter: drop-shadow(0 0 calc(var(--pixel-size) * var(--pixel-glow) / 2) black)
+      drop-shadow(0 0 calc(var(--pixel-size) * var(--pixel-glow)) color-mix(in srgb, currentColor, transparent));
+    animation-name: horizontal-shift, vertical-shift;
+    animation-duration: calc((var(--horizontal-pixel-shift) * 2 + 1) * var(--step-duration)),
+      calc((var(--horizontal-pixel-shift) * 2 + 1) * (var(--vertical-pixel-shift) + 1) * var(--step-duration)),
+      calc(var(--step-duration) * 2);
+    animation-iteration-count: infinite, infinite, infinite;
+    animation-direction: alternate, normal, normal;
+    animation-timing-function: steps(calc(var(--horizontal-pixel-shift) * 2 + 1), jump-none),
+      steps(calc(var(--vertical-pixel-shift) + 1), jump-none), steps(2, jump-none);
+  }
+  path {
+    animation-name: enemy-1;
+    animation-duration: calc(var(--step-duration) * 2);
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+    animation-timing-function: steps(2, jump-none);
+  }
+  svg:nth-of-type(n + 13) path {
+    animation-name: enemy-2;
+  }
+  svg:nth-of-type(n + 37) path {
+    animation-name: enemy-3;
+  }
+
+  .cannon {
+    position: fixed;
+    bottom: calc(var(--pixel-size) * 4);
+    left: 50%;
+    translate: 0 0;
+    animation: cannon 10s infinite;
+
+    > path {
+      animation: none;
+      d: path('M0,4h1v-1h3v-2h1v-1h1v1h1v2h3v1h1v4h-11');
+    }
+  }
+
+  .bunker {
+    position: fixed;
+    bottom: calc(var(--pixel-size) * 16);
+    left: 50%;
+    width: calc(var(--pixel-size) * 24);
+    height: calc(var(--pixel-size) * 16);
+    translate: -50% 0;
+    animation: none;
+
+    + .bunker {
+      left: calc(50% - var(--pixel-size) * 50);
+      + .bunker {
+        left: calc(50% + var(--pixel-size) * 50);
+      }
+    }
+
+    > path {
+      animation: none;
+      d: path('M0,4h1v-1h1v-1h1v-1h1v-1h16v1h1v1h1v1h1v1h1v15h-6v-6h-1v-1h-1v-1h-8v1h-1v1h-1v6h-6');
+    }
+  }
+
+  @keyframes horizontal-shift {
+    from {
+      left: calc(var(--pixel-size) * var(--horizontal-pixel-shift) * -1);
+    }
+    to {
+      left: calc(var(--pixel-size) * var(--horizontal-pixel-shift) * 1);
+    }
+  }
+  @keyframes vertical-shift {
+    from {
+      top: 0vmin;
+    }
+    to {
+      top: calc(var(--pixel-size) * var(--vertical-pixel-shift));
+    }
+  }
+
+  @keyframes enemy-1 {
+    from {
+      d: path(
+        'M2,3h1v-1h1v-1h1v-1h2v1h1v1h1v1h1v2h-1v1h1v1h-1v1h-1v-1h1v-1h-1v-3h-1v1h1v1h-1v1h-2v-1h-1v-1h1v-1h-1v3h-1v1h1v1h-1v-1h-1v-1h1v-1h-1'
+      );
+    }
+    to {
+      d: path(
+        'M2,3h1v-1h1v-1h1v-1h2v1h1v1h1v1h1v2h-2v1h1v1h1v1h-1v-1h-1v1h-1v-1h1v-1h-1v1h-1v-1h1v-2h1v-1h-1v2h-2v-2h-1v1h1v2h1v1h-1v1h-1v-1h1v-1h-1v1h-1v1h-1v-1h1v-1h1v-1h-2'
+      );
+    }
+  }
+  @keyframes enemy-2 {
+    from {
+      d: path(
+        'M0,4h1v-1h1v-1h1v-1h-1v-1h1v1h1v1h3v-1h1v-1h1v1h-1v1h1v1h1v1h1v3h-1v-2h-1v2h-1v1h-2v-1h2v-4h-1v1h1v2h-5v-2h1v-1h-1v4h2v1h-2v-1h-1v-2h-1v2h-1'
+      );
+    }
+    to {
+      d: path(
+        'M0,1h1v2h1v-1h1v-1h-1v-1h1v1h1v1h3v-1h1v-1h1v1h-1v1h1v1h1v-2h1v4h-1v1h-1v1h1v1h-1v-1h-1v-4h-1v1h1v2h-5v-2h1v-1h-1v4h-1v1h-1v-1h1v-1h-1v-1h-1'
+      );
+    }
+  }
+  @keyframes enemy-3 {
+    from {
+      d: path(
+        'M0,2h1v-1h3v-1h4v1h3v1h1v3h-2v1h1v1h-1v1h-2v-1h1v-4h-2v1h2v2h-2v1h-1v-1h1v-1h-2v1h1v1h-1v-1h-2v-2h2v-1h-2v4h1v1h-2v-1h-1v-1h1v-1h-2z'
+      );
+    }
+    to {
+      d: path(
+        'M0,2h1v-1h3v-1h4v1h3v1h1v3h-3v-2h-2v1h2v2h1v1h2v1h-2v-1h-2v-1h-1v1h-1v-1h1v-1h-2v1h1v1h-1v-1h-1v1h-2v1h-2v-1h2v-1h1v-2h2v-1h-2v2h-3z'
+      );
+    }
+  }
+
+  @keyframes cannon {
+    0% {
+      translate: 0 0;
+    }
+    10% {
+      translate: calc(var(--pixel-size) * var(--horizontal-pixel-shift) * sin(245243deg) * 4) 0;
+    }
+    20% {
+      translate: calc(var(--pixel-size) * var(--horizontal-pixel-shift) * sin(4324deg) * 4) 0;
+    }
+    30% {
+      translate: calc(var(--pixel-size) * var(--horizontal-pixel-shift) * sin(46763deg) * 4) 0;
+    }
+    40% {
+      translate: calc(var(--pixel-size) * var(--horizontal-pixel-shift) * sin(156743deg) * 4) 0;
+    }
+    50% {
+      translate: calc(var(--pixel-size) * var(--horizontal-pixel-shift) * sin(312435deg) * 4) 0;
+    }
+    60% {
+      translate: calc(var(--pixel-size) * var(--horizontal-pixel-shift) * sin(84692deg) * 4) 0;
+    }
+    70% {
+      translate: calc(var(--pixel-size) * var(--horizontal-pixel-shift) * sin(81467246deg) * 4) 0;
+    }
+    80% {
+      translate: calc(var(--pixel-size) * var(--horizontal-pixel-shift) * sin(524245deg) * 4) 0;
+    }
+    90% {
+      translate: calc(var(--pixel-size) * var(--horizontal-pixel-shift) * sin(1092189deg) * 4) 0;
+    }
+    100% {
+      translate: 0 0;
+    }
+  }
+}
