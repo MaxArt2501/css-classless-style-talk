@@ -25,7 +25,11 @@ const safeWrite = (path, content) => {
 const safeCopy = (source, dest) => {
   const directory = dirname(dest);
   if (!existsSync(directory)) mkdirSync(directory, { recursive: true });
-  copyFileSync(source, dest);
+  try {
+    copyFileSync(source, dest);
+  } catch (e) {
+    console.warn(`*** Cannot copy ${source}: ${/** @type {Error} */ (e).message} ${e.stack.slice(0, 0)}`);
+  }
 };
 
 export const buildSlides = () => {
@@ -76,6 +80,7 @@ export const copyVendors = () => {
       'node_modules/p-slides/*.js',
       'node_modules/p-slides/css/**/*.css',
       'node_modules/prismjs/prism.js',
+      'node_modules/prismjs/components/prism-jsx.js',
       'node_modules/prismjs/components/prism-typescript.js',
       'node_modules/prismjs/components/prism-scss.js',
       'node_modules/prismjs/themes/prism.css'
