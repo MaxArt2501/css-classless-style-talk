@@ -4,7 +4,7 @@
   initial-value: 1s;
 }
 
-.space-invaders {
+.space-invaders[aria-hidden='false'] {
   --slide-bg: linear-gradient(to bottom, #2a2139 75%, #34294f);
   --display-color: color-mix(in lab, white 30%, var(--brand-color));
   --step-duration: 0.5s;

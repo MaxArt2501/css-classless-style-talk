@@ -1,0 +1,505 @@
+<p-slide class="justify-start" style="--slide-bg: linear-gradient(#0c1241 50%, #130e2d 0)">
+  <h1 class="center outline" style="color: #ff867e">Isolation</h1>
+  <img src="img/island.webp" alt="" class="full-media" />
+</p-slide>
+<p-slide class="gradient-1">
+  <pre class="display self-center language-html"><code style="width: 55ch;">&lt;div class="content-card">
+  &lt;header class="content-card__header">...&lt;/header>
+  &lt;picture class="content-card__picture">
+    &lt;img src="..." class="content-card__image">
+  &lt;/picture>
+  &lt;section class="content-card__abstract">...&lt;/section>
+  &lt;footer class="content-card__footer">
+    &lt;button class="content-card__favorite">☆&lt;/button>
+    &lt;nav class="content-card__actions">
+      &lt;a href="#" class="content-card__action">Later&lt;/a>
+      &lt;a href="#" class="content-card__action
+        content-card__action--view">View&lt;/a>
+    &lt;/nav>
+  &lt;/footer>
+&lt;/div></code></pre>
+</p-slide>
+<p-slide class="gradient-1">
+  <pre class="display self-center language-html"><code style="width: 55ch;">&lt;div class="content-card">
+  &lt;header class="header">...&lt;/header>
+  &lt;picture class="picture">
+    &lt;img src="..." class="image">
+  &lt;/picture>
+  &lt;section class="abstract">...&lt;/section>
+  &lt;footer class="footer">
+    &lt;button class="favorite">☆&lt;/button>
+    &lt;nav class="actions">
+      &lt;a href="#" class="action">Later&lt;/a>
+      &lt;a href="#" class="action view">View&lt;/a>
+      ...
+    &lt;/nav>
+  &lt;/footer>
+&lt;/div>
+</code></pre>
+</p-slide>
+<p-slide class="gradient-1">
+  <pre class="display self-center language-html"><code style="width: 55ch;">&lt;div>
+  &lt;header>...&lt;/header>
+  &lt;picture>
+    &lt;img src="...">
+  &lt;/picture>
+  &lt;section>...&lt;/section>
+  &lt;footer>
+    &lt;button>☆&lt;/button>
+    &lt;nav>
+      &lt;a href="#">Later&lt;/a>
+      &lt;a href="#" class="view">View&lt;/a>
+      ...
+    &lt;/nav>
+  &lt;/footer>
+&lt;/div>
+</code></pre>
+</p-slide>
+<p-slide class="gradient-1">
+  <pre class="display top-left self-start language-html"><code>&lt;ul>
+  &lt;li>Item A1&lt;/li> ...
+&lt;/ul>
+&lt;ul class="no-top-margin">...&lt;/ul>
+&lt;ul class="no-top-margin">...&lt;/ul></code></pre>
+  <p-fragment class="big-x" style="top: 14%; left: 9%; width: 8em"></p-fragment>
+  <div style="display: flex; margin: 0.5em; gap: 0.5em" class="self-end">
+    <p-fragment class="self-end">
+      <pre class="display top-left self-start language-html"><code>&lt;ul>
+  &lt;li>Item A1&lt;/li> ...
+&lt;/ul>
+&lt;ul>...&lt;/ul>
+&lt;ul>...&lt;/ul></code></pre>
+    </p-fragment>
+    <p-fragment class="self-start">
+      <pre class="display top-right self-start language-css"><code>
+ul + ul {
+  margin-top: 0;
+}
+&nbsp;</code></pre>
+    </p-fragment>
+  </div>
+</p-slide>
+<p-slide class="gradient-1">
+  <pre class="display top-left self-start language-html"><code>&lt;div class="tab-group">
+  &lt;button class="tab">General&lt;/button>
+  &lt;button class="tab active">Network&lt;/button>
+  &lt;button class="tab">Users&lt;/button>
+&lt;/div></code></pre>
+  <p-fragment class="big-x" style="top: 14%; left: 13%; width: 8em"></p-fragment>
+  <div style="display: flex; margin: 0.5em; gap: 0.5em">
+    <p-fragment class="self-end">
+      <pre class="display top-left self-start language-html"><code>&lt;div role="tablist">
+  &lt;button role="tab">General&lt;/button>
+  &lt;button role="tab" aria-selected="true">Network&lt;/button>
+  &lt;button role="tab">Users&lt;/button>
+&lt;/div></code></pre>
+    </p-fragment>
+    <p-fragment class="self-start">
+      <pre class="display top-right self-start language-css"><code>[role=tablist] { ... }
+[role=tab] { ... }
+[aria-selected="true"] {
+  font-weight: bold;
+}</code></pre>
+    </p-fragment>
+  </div>
+  <p-notes>
+    <p>That's what I mean with "classless" style. You probably don't need to create classes at all, you don't need to invent names. Naming things is <em>hard</em>.</p>
+    <p>I've said this back in 2018, but <em>repetita juvant</em>&hellip;</p>
+    <p>But let's see how we can apply this pattern effectively.</p>
+  </p-notes>
+</p-slide>
+<p-slide class="justify-start" style="--slide-bg: linear-gradient(#0d0140 50%, black 0)">
+  <h1 class="center outline marker" style="color: #39c5ff">Shadow DOM</h1>
+  <img src="img/street-shadow.webp" alt="" class="full-media" />
+</p-slide>
+<p-slide style="--slide-bg: #0f0f11">
+  <img src="img/angular.svg" alt="Angular logo" style="height: 10em; filter: drop-shadow(0 0 0.5em #ff31d980)" />
+</p-slide>
+<p-slide style="--slide-bg: #0f0f11">
+  <img src="img/vue.svg" alt="Vue logo" style="height: 10em; filter: drop-shadow(0 0 0.5em #41b88380)" />
+  <p-notes>Several others too: Svelte, Astro</p-notes>
+</p-slide>
+<p-slide style="--slide-bg: #0f0f11">
+  <img src="img/react.svg" alt="React logo" style="height: 10em; filter: drop-shadow(0 0 0.5em #087ea480)" />
+  <p-fragment>
+    <h1 class="from-above outline marker" style="inset: 0; align-items: center; display: flex; justify-content: center; font-size: 10em; color: #087ea4; filter: brightness(2.5)">
+      ?
+    </h1>
+  </p-fragment>
+  <p-notes>With React&hellip; it depends. You can choose your own poison when it comes with styles. But, "natively", React comes with CSS Modules.</p-notes>
+</p-slide>
+<p-slide class="gradient-1">
+  <div style="display: flex; gap: 1em; justify-content: center">
+    <pre class="display no-right language-jsx"><code>import styles from './card.module.css';
+
+export default function Card() {
+  return &lt;div className={styles.card}>
+    &lt;header>...&lt;/header>
+    &lt;picture>...&lt;/picture>
+    &lt;section>...&lt;/section>
+    &lt;footer>...&lt;/footer>
+  &lt;/div>
+}</code></pre>
+    <pre class="display no-left language-css"><code>/* card.module.css */
+
+.card { ... }
+.card header { ... }
+.card picture { ... }
+.card section { ... }
+.card footer { ... }
+.card a { ... }
+.card a.view { ... }</code></pre>
+  </div>
+  <p-notes>
+    <p>So, in the end, you only need to use <em>one</em> class, that we set to the component's name itself.</p>
+    <p>Many frameworks support CSS Modules, like Solid, Qwik&hellip;</p>
+    <p>A little caveat, though, because the generated CSS does <em>not</em> have a lower bound!</p>
+  </p-notes>
+</p-slide>
+<p-slide class="gradient-1 code-4-split">
+  <pre class="display top-left language-html"><code>&lt;header>
+  &lt;span>
+    {{ cardTitle }}
+  &lt;/span>
+&lt;/header>
+...</code></pre>
+  <p-fragment>
+    <pre class="display top-right language-html"><code>&lt;header data-v-123abc>
+  &lt;span data-v-123abc>
+    Hello, world!
+  &lt;/span>
+&lt;/header>
+...</code></pre>
+  </p-fragment>
+  <p-fragment style="position: absolute; inset: 0">
+    <img
+      src="img/marker-circle.svg#svgView(preserveAspectRatio(none))"
+      alt="A marker circle around the 'data-v-123abc' attribute of the header element"
+      class="from-above"
+      style="top: 18%; width: 4em; left: 57%; height: 1em"
+    />
+    <img
+      src="img/marker-circle.svg#svgView(preserveAspectRatio(none))"
+      alt="A marker circle around the 'data-v-123abc' attribute of the span element"
+      class="from-above"
+      style="top: 22%; width: 4em; left: 57%; height: 1em"
+    />
+  </p-fragment>
+  <p-fragment>
+    <pre class="display bottom-left language-css"><code>header span {
+  ...
+}
+...</code></pre>
+  </p-fragment>
+  <p-fragment>
+    <pre class="display bottom-right language-css"><code>header[data-v-123abc] span[data-v-123abc] {
+  ...
+}
+...</code></pre>
+  </p-fragment>
+  <p-fragment style="position: absolute; inset: 0">
+    <img
+      src="img/marker-circle.svg#svgView(preserveAspectRatio(none))"
+      alt="A marker circle around the 'data-v-123abc' attribute of the header selector"
+      class="from-above"
+      style="top: 53%; width: 4em; left: 56%; height: 1em"
+    />
+    <img
+      src="img/marker-circle.svg#svgView(preserveAspectRatio(none))"
+      alt="A marker circle around the 'data-v-123abc' attribute of the span selector"
+      class="from-above"
+      style="top: 53%; width: 4em; left: 72.5%; height: 1em"
+    />
+  </p-fragment>
+</p-slide>
+<p-slide class="gradient-1 code-4-split">
+  <pre class="display top-left language-html"><code>&lt;header className={styles.header}>
+  &lt;span>
+    { cardTitle }
+  &lt;/span>
+&lt;/header>
+...</code></pre>
+  <p-fragment>
+    <pre class="display top-right language-html"><code>&lt;header class="styles_header_123abc">
+  &lt;span>
+    Hello, world!
+  &lt;/span>
+&lt;/header>
+...</code></pre>
+  </p-fragment>
+  <p-fragment style="position: absolute; inset: 0">
+    <img
+      src="img/marker-circle.svg#svgView(preserveAspectRatio(none))"
+      alt="A marker circle around the 'styles_header_123abc' class of the header element"
+      class="from-above"
+      style="top: 18%; width: 5.4em; left: 64%; height: 1em"
+    />
+  </p-fragment>
+  <p-fragment style="position: absolute; inset: 0">
+    <img
+      src="img/marker-circle.svg#svgView(preserveAspectRatio(none))"
+      alt="A marker circle around the absence of a random class on the span element"
+      class="from-above"
+      style="top: 22%; width: 2em; left: 54%; height: 1em"
+    />
+  </p-fragment>
+  <p-fragment>
+    <pre class="display bottom-left language-css"><code>.header span {
+  ...
+}
+...</code></pre>
+  </p-fragment>
+  <p-fragment>
+    <pre class="display bottom-right language-css"><code>.styles_header_123abc span {
+  ...
+}
+...</code></pre>
+  </p-fragment>
+  <p-fragment style="position: absolute; inset: 0">
+    <img
+      src="img/marker-circle.svg#svgView(preserveAspectRatio(none))"
+      alt="A marker circle around the 'styles_header_123abc' selector class"
+      class="from-above"
+      style="top: 53%; width: 5.4em; left: 51.7%; height: 1em"
+    />
+    <img
+      src="img/marker-circle.svg#svgView(preserveAspectRatio(none))"
+      alt="A marker circle around the absence of a random class on the span selector"
+      class="from-above"
+      style="top: 53%; width: 2em; left: 70.8%; height: 1em"
+    />
+    <p-notes>This means that our selector would match a span element inside the DOM branch, even if it doesn't belong to our component!</p-notes>
+    <p-notes>In this case, we can either define a class basically for every element of the component, or maybe there's something else&hellip;</p-notes>
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <h1 class="marker center">We could use something&hellip;</h1>
+</p-slide>
+<p-slide class="justify-start" style="--slide-bg: #000">
+  <h1
+    class="code-space center from-top"
+    style="
+      color: cyan;
+      font-size: 4em;
+      -webkit-text-stroke-color: currentColor;
+      -webkit-text-fill-color: #000;
+      -webkit-text-stroke-width: 0.02em;
+      filter: drop-shadow(0 0 0.05em #0ff);
+    "
+  >
+    @scope
+  </h1>
+  <img src="img/tron.svg" alt="" class="from-bottom" style="position: absolute; height: 5em; left: 1em; top: 0.2em; filter: drop-shadow(0 0 0.08em cyan); font-size: 5em" />
+</p-slide>
+<p-slide class="raw-code-slide">
+  <div class="two-columns">
+    <pre class="language-html"><code>&lt;style>
+  p { color: rebeccapurple; }
+&lt;/style>
+&lt;p>I am purple!&lt;/p>
+&lt;section>
+  &lt;p>What color am I?&lt;/p></code><p-fragment><code class="language-html">
+  &lt;style>
+    @scope {
+      p { color: deepskyblue; }
+    }
+  &lt;/style></code></p-fragment>
+<code class="language-html">&lt;/section></code></pre>
+    <p-fragment>
+      <div class="from-right">
+        <p style="font-weight: bold; color: rebeccapurple; margin: 1.33em 1em">I am purple!</p>
+        <section>
+          <style>
+            @scope {
+              :scope {
+                outline: 0.1em solid deepskyblue;
+                padding: 1lh 1em;
+              }
+              p {
+                color: deepskyblue;
+                font-weight: bold;
+                margin: 0;
+              }
+            }
+          </style>
+          <p>What color am I?</p>
+        </section>
+      </div>
+    </p-fragment>
+  </div>
+  <p-notes>Styles have an <em>upper bound</em>: won't spill outside the scoping node (the section element in this case)</p-notes>
+</p-slide>
+<p-slide class="title-slide">
+  <h1 class="marker">It gets better.</h1>
+</p-slide>
+<p-slide class="raw-code-slide">
+  <div class="two-columns">
+    <pre class="language-html"><code>&lt;section>
+  &lt;p>What color am I?&lt;/p>
+  &lt;style>
+    @scope {
+      :scope {
+        color: deepskyblue;
+        outline: 0.1em solid;
+        padding: 1lh 1em;
+      }
+    }
+  &lt;/style>
+&lt;/section></code></pre>
+    <section class="self-center">
+      <style>
+        @scope {
+          :scope {
+            color: deepskyblue;
+            outline: 0.1em solid;
+            padding: 1lh 1em;
+          }
+          p {
+            font-weight: bold;
+            margin: 0;
+          }
+        }
+      </style>
+      <p>What color am I?</p>
+    </section>
+  </div>
+  <p-notes>It's like :host for Web or Angular components</p-notes>
+  <p-fragment>
+    <img
+      src="img/marker-circle.svg#svgView(preserveAspectRatio(none))"
+      alt="A marker circle around the :scope selector"
+      class="from-above"
+      style="top: 38.4%; width: 2.2em; left: 11.6%; height: 1em"
+    />
+  </p-fragment>
+</p-slide>
+<p-slide class="raw-code-slide">
+  <div class="two-columns">
+    <pre class="language-html"><code>&lt;section class="invert">
+  &lt;p>What color am I?&lt;/p>
+  &lt;style>
+    ...
+    @scope (.invert) {
+      :scope {
+        backgound: deepskyblue;
+        color: white;
+      }
+    }
+  &lt;/style>
+&lt;/section></code></pre>
+    <p-fragment index="1" class="self-center">
+      <section class="invert from-right">
+        <style>
+          @scope (.invert) {
+            :scope {
+              background: deepskyblue;
+              color: white;
+              outline: 0.1em solid;
+              padding: 1lh 1em;
+            }
+            p {
+              font-weight: bold;
+              margin: 0;
+            }
+          }
+        </style>
+        <p>What color am I?</p>
+      </section>
+    </p-fragment>
+  </div>
+  <p-notes>It's like :host for Web or Angular components</p-notes>
+  <p-notes>BTW, specifying a <em>starting</em> selector is the only way to use @scope inside a separate stylesheet, otherwise it'd target the :root/:host node.</p-notes>
+  <p-fragment>
+    <img
+      src="img/marker-circle.svg#svgView(preserveAspectRatio(none))"
+      alt="A marker circle around the .invert class of the section element"
+      class="from-above"
+      style="top: 17%; width: 3em; left: 21%; height: 1em"
+    />
+    <img
+      src="img/marker-circle.svg#svgView(preserveAspectRatio(none))"
+      alt="A marker circle around the .invert class selector after the @scope at-rule"
+      class="from-above"
+      style="top: 38.4%; width: 3.2em; left: 16.6%; height: 1em"
+    />
+  </p-fragment>
+</p-slide>
+<p-slide class="raw-code-slide">
+  <h3 class="center">&hellip; depending on the <em>context</em>?</h3>
+  <div class="two-columns">
+    <pre class="language-css"><code>@scope {
+  :scope {
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+@scope (dialog > footer) {
+  :scope {
+    justify-content: center;
+  }
+}</code></pre>
+    <p-fragment index="1" class="self-center">
+      <h2 class="marker from-right center">This works!</h2>
+    </p-fragment>
+  </div>
+  <p-notes>It's like :host-context, but it works in Safari too!</p-notes>
+  <p-fragment>
+    <img
+      src="img/marker-circle.svg#svgView(preserveAspectRatio(none))"
+      alt="A marker circle around the 'dialog > footer' selector"
+      class="from-above"
+      style="top: 59%; width: 5.5em; left: 12%; height: 1.5em"
+    />
+  </p-fragment>
+</p-slide>
+<p-slide class="c64-slide">
+  <h4 class="center">We've seen UPPER bounds</h4>
+  <p-fragment>
+    <h2 class="center">What about LOWER bounds?</h2>
+  </p-fragment>
+  <p-notes>Writing styles from a node down, without a limit on how deep it can reach, might not be ideal.</p-notes>
+</p-slide>
+<p-slide class="super-mario-code" style="flex-direction: row; align-items: flex-start">
+  <pre class="language-jsx"><code>function MyCard({ title, children }) {
+  return &lt;div class="my-card">
+    &lt;header>
+      &lt;MyHeader title={title}/>
+    &lt;/header>
+    &lt;section>{...children}&lt;/section>
+  &lt;/div>
+}</code></pre>
+  <p-fragment style="margin-left: calc(var(--pixel-size) * -16)">
+    <pre class="from-right language-css"><code>@scope (.my-card) to
+  (.my-header, section) {
+  :scope {
+    ...
+  }
+  header { ... }
+  section { ... }
+}</code></pre>
+  </p-fragment>
+  <p-fragment>
+    <img
+      src="img/marker-circle.svg#svgView(preserveAspectRatio(none))"
+      alt="A marker circle around the .my-card class of the @scope at-rule"
+      class="from-above"
+      style="top: 17%; width: 3.5em; left: 67%; height: 1em"
+    />
+  </p-fragment>
+  <p-fragment>
+    <img
+      src="img/marker-circle.svg#svgView(preserveAspectRatio(none))"
+      alt="A marker circle around the .my-header class selector"
+      class="from-above"
+      style="top: 22%; width: 4em; left: 61%; height: 1em"
+    />
+  </p-fragment>
+  <p-fragment>
+    <img
+      src="img/marker-circle.svg#svgView(preserveAspectRatio(none))"
+      alt="A marker circle around the section selector"
+      class="from-above"
+      style="top: 22%; width: 3em; left: 75%; height: 1em"
+    />
+  </p-fragment>
+</p-slide>

@@ -12,6 +12,20 @@
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC,
     U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
+@font-face {
+  font-family: 'JLS Space Gothic';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(../fonts/jls-space-gothic-rnc.otf) format('opentype');
+}
+@font-face {
+  font-family: 'Public Pixel';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(../fonts/public-pixel.ttf) format('truetype');
+}
 
 h1,
 h2,
@@ -24,6 +38,10 @@ h6 {
   &.light {
     color: #f9c;
   }
+}
+
+.token.operator {
+  background: transparent;
 }
 
 .sunset-slide {
@@ -116,6 +134,12 @@ h6 {
 .marker {
   font-family: 'Permanent marker', cursive;
   color: var(--brand-color);
+  font-weight: normal;
+}
+
+.code-space {
+  font-family: 'JLS Space Gothic', monospace;
+  font-weight: normal;
 }
 
 .title-slide {
@@ -128,5 +152,108 @@ h6 {
   }
   &[aria-hidden='false'] > :is(h1, h2, h3, h4, h5, h6) {
     animation: from-top 0.5s 1 forwards;
+  }
+}
+
+pre.display {
+  border-image-source: url(../img/display.webp);
+  border-image-slice: 52 54 110;
+  border-image-width: 2.6em 2.7em 5.5em;
+  border-width: 2.6em 2.7em 5.5em;
+  border-style: solid;
+  margin: -1em 0;
+  overflow: hidden;
+  line-height: normal;
+  padding-block: 0.5em;
+  background-clip: padding-box;
+
+  @each $block in top bottom {
+    @each $inline in left right {
+      &.#{$block}-#{$inline} {
+        border-image-width: #{if($block == top, 2.6em, 0)}
+          #{if($inline == right, 2.7em, 0)}
+          #{if($block == bottom, 5.5em, 0)}
+          #{if($inline == left, 2.7em, 0)};
+        border-width: #{if($block == top, 2.6em, 0)}
+          #{if($inline == right, 2.7em, 0)}
+          #{if($block == bottom, 5.5em, 0)}
+          #{if($inline == left, 2.7em, 0)};
+        margin: 0;
+      }
+    }
+  }
+  @each $side in top right bottom left {
+    &.no-#{$side} {
+      border-image-width: #{if($side == top, 0, 2.6em)}
+        #{if($side == right, 0, 2.7em)}
+        #{if($side == bottom, 0, 5.5em)}
+        #{if($side == left, 0, 2.7em)};
+      border-width: #{if($side == top, 0, 2.6em)}
+        #{if($side == right, 0, 2.7em)}
+        #{if($side == bottom, 0, 5.5em)}
+        #{if($side == left, 0, 2.7em)};
+      margin: 0;
+    }
+  }
+
+  > code {
+    display: block;
+    font-size: 75%;
+  }
+}
+
+.outline {
+  -webkit-text-fill-color: #000;
+  -webkit-text-stroke-color: currentColor;
+  -webkit-text-stroke-width: 0.02em;
+  text-shadow: 0 0 0.2em;
+}
+
+.code-4-split[aria-hidden='false'] {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1em;
+  place-content: center;
+}
+
+.gradient-1 {
+  --slide-bg: #4158d0 linear-gradient(325deg, #4158d0 0%, #c850c0 46%, #ffcc70 100%);
+}
+
+.c64-slide {
+  --slide-bg: var(--brand-color);
+  font-family: 'Public Pixel', monospace;
+  color: color-mix(in lab, var(--slide-bg), white);
+  border: 1em solid;
+
+  * {
+    font-family: 'Public Pixel', monospace;
+  }
+}
+
+.raw-code-slide {
+  /* Pattern by Temami Afif https://css-pattern.com/#g88 */
+  --slide-bg: conic-gradient(at 25% 25%, #0000 75%, #d3e5ff 0) 0 1.5em/2em 2em, conic-gradient(#0000 75%, #c9dbff 0) -0.25em 1.25em/2em 2em,
+    conic-gradient(at 25% 75%, #d3e5ff 25%, #c9dbff 0) 0 0/2em 2em;
+}
+
+.super-mario-code {
+  --slide-bg: #5c94fc;
+  --pixel-size: 0.075em;
+  background: url(../img/ground.svg) 0 100% / calc(var(--pixel-size) * 16) calc(var(--pixel-size) * 16) repeat-x;
+
+  pre {
+    margin: 0;
+    font-size: 100%;
+    padding: calc(var(--pixel-size) * 20);
+    box-shadow: inset 0 var(--pixel-size) #fcbcb0;
+    background: linear-gradient(#000, #000) calc(var(--pixel-size) * 16) calc(var(--pixel-size) * 16) / calc(100% - var(--pixel-size) * 32)
+        calc(100% - var(--pixel-size) * 32) no-repeat,
+      url(../img/brick.svg) 0 0 / calc(var(--pixel-size) * 16) calc(var(--pixel-size) * 16);
+
+    code {
+      font-size: 50%;
+      display: block;
+    }
   }
 }
