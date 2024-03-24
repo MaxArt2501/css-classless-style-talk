@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <pre><code>/** @param {string[]} paths */
+const getCommonPath = paths => {
+  const dirs = new Set(paths.map(path => dirname(path)));
+  const splitDirs = Array.from(dirs, dir => dir.split(sep));
+  return splitDirs
+    .reduce((segments, splitPath) => {
+      const differentIndex = segments.findIndex((segment, index) => segment !== splitPath[index]);
+      return differentIndex >= 0 ? segments.slice(0, differentIndex) : segments;
+    })
+    .join(sep);
+};</code></pre>
+  </body>
+</html>
