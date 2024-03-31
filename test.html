@@ -4,18 +4,58 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <style>
+      @layer foo, bar;
+
+      :root {
+        font-family: system-ui, sans-serif;
+        font-size: 500%;
+        font-weight: bold;
+      }
+
+      /* @layer {
+        p {
+          color: red;
+        }
+      } */
+      @layer bar {
+        p {
+          color: blue;
+        }
+      }
+      /* @layer bar {
+        p {
+          color: brown;
+        }
+      } */
+      @layer foo {
+        p.special {
+          color: forestgreen;
+          font-style: italic;
+        }
+      }
+      /* @layer {
+        p {
+          color: rebeccapurple;
+        }
+      } */
+      /* p {
+        color: skyblue;
+      } */
+      /* @scope (.scoped) {
+        @layer bar, foo;
+      } */
+    </style>
   </head>
   <body>
-    <pre><code>/** @param {string[]} paths */
-const getCommonPath = paths => {
-  const dirs = new Set(paths.map(path => dirname(path)));
-  const splitDirs = Array.from(dirs, dir => dir.split(sep));
-  return splitDirs
-    .reduce((segments, splitPath) => {
-      const differentIndex = segments.findIndex((segment, index) => segment !== splitPath[index]);
-      return differentIndex >= 0 ? segments.slice(0, differentIndex) : segments;
-    })
-    .join(sep);
-};</code></pre>
+    <p class="special">Hello, world!</p>
+    <div class="scoped">
+      <style>
+        @scope {
+          @layer bar, foo;
+        }
+      </style>
+      <p class="special">Hello, scope!</p>
+    </div>
   </body>
 </html>

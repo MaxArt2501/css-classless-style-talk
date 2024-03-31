@@ -592,7 +592,7 @@ export default function Card() {
     &lt;header>
       &lt;MyHeader title={title}/>
     &lt;/header>
-    &lt;section>{...children}&lt;/section>
+    &lt;section>{children}&lt;/section>
   &lt;/div>
 }</code></pre>
   <p-fragment style="margin-left: calc(var(--pixel-size) * -16)">
@@ -629,7 +629,367 @@ export default function Card() {
       style="top: 22%; width: 3em; left: 75%; height: 1em"
     />
   </p-fragment>
+</p-slide>
+<p-slide>
+  <h1 class="center marker">&hellip; did you know?</h1>
+  <p-fragment class="self-center">
+    <pre class="from-bottom language-js big"><code>const paragraphChildren =
+  element.querySelectorAll(':scope > p');</code></pre>
+  </p-fragment>
+  <p-fragment>
+    <img
+      src="img/marker-circle.svg#svgView(preserveAspectRatio(none))"
+      alt="A marker circle around the :scope selector"
+      class="from-above"
+      style="top: 62%; width: 5em; left: 58%; height: 2em"
+    />
+  </p-fragment>
 </p-slide><!--/slide:encapsulation-->
+<!--slide:layers--><p-slide>
+  <h1 class="center marker">Is that enough?</h1>
+</p-slide>
+<p-slide class="gradient-1 code-4-split">
+  <pre class="display no-bottom language-css"><code>.tab-group__label--active {
+  font-weight: bold;
+}</code></pre>
+  <p-fragment index="1" class="center pixel self-end" style="color: white; font-size: 75%">
+    <div>Specificity:</div>
+    <div>0.1.0</div>
+  </p-fragment>
+  <p-fragment index="2" class="center">
+    <pre class="display no-top language-css"><code>[role="tab"][aria-selected="true"] {
+  font-weight: bold;
+}</code></pre>
+  </p-fragment>
+  <p-fragment index="4" class="center pixel" style="color: white; font-size: 75%">
+    <div>Specificity:</div>
+    <div>0.2.0</div>
+  </p-fragment>
+  <p-fragment index="0">
+    <img
+      src="img/marker-circle.svg#svgView(preserveAspectRatio(none))"
+      alt="A marker circle around the BEM class selector"
+      class="from-above"
+      style="top: 22%; width: 7em; left: 8%; height: 1em"
+    />
+  </p-fragment>
+  <p-fragment index="3">
+    <img
+      src="img/marker-circle.svg#svgView(preserveAspectRatio(none))"
+      alt="A marker circle around the [role=tab] attribute selector"
+      class="from-above"
+      style="top: 45%; width: 3.1em; left: 10%; height: 1em"
+    />
+    <img
+      src="img/marker-circle.svg#svgView(preserveAspectRatio(none))"
+      alt="A marker circle around the [aria-selected=true] attribute selector"
+      class="from-above"
+      style="top: 45%; width: 5.6em; left: 19.5%; height: 1em"
+    />
+    <p-notes>Are we breaking the "golden rule" of the 0.1.0 specificity? <em>Yes!</em> And it's about time!</p-notes>
+  </p-fragment>
+</p-slide>
+<p-slide style="--slide-bg: url(../img/layers.jpg) 50% / cover">
+  <p-fragment
+    ><h1
+      class="center marker uppercase outline clip-left"
+      style="
+        color: #e4cde9;
+        font-size: 4em;
+        text-shadow: none;
+        -webkit-text-fill-color: color-mix(in srgb, currentColor, transparent 75%);
+        filter: drop-shadow(black 0px 0px 0.035em) drop-shadow(currentColor 0px 0px 0.1em);
+      "
+    >
+      Layers
+    </h1></p-fragment
+  >
+</p-slide>
+<p-slide class="code-slide">
+  <pre class="self-center"><code class="language-css">@layer scaffold,
+       utilities,
+       component;
+</code><p-fragment><code class="language-css">
+@layer scaffold {
+  * { box-sizing: border-box; }
+  * + * { margin-top: 0; }
+  ...
+}</code></p-fragment></pre>
+</p-slide>
+<p-slide class="gradient-2">
+  <div class="two-columns">
+    <pre class="display" style="margin: 0 auto; aspect-ratio: 1.1; width: min-content"><code class="language-html big">
+&ltp class="special">
+  Hello, world!
+&lt/p></code></pre>
+    <div class="stack content-center">
+      <p-fragment>
+        <pre><code class="language-css">             p { color: #222; }</code>
+<p-fragment><code class="language-css">
+      .special { color: salmon; }</code></p-fragment>
+<p-fragment><code class="language-css">
+:first-of-type { color: red; }</code></p-fragment></pre>
+      </p-fragment>
+      <p-fragment>
+        <pre><code class="language-css">             p { color: #222; }
+
+             p { color: salmon; }
+
+             p { color: red; }</code></p-fragment></pre>
+      </p-fragment>
+    </div>
+  </div>
+  <p-fragment>
+    <span class="from-above outline marker" style="top: 6%; left: 65%; font-size: 800%; color: white; -webkit-text-fill-color: color-mix(in srgb, transparent, currentColor)"
+      >?</span
+    >
+  </p-fragment>
+  <p-notes
+    >We could:
+    <ul>
+      <li>move rules;</li>
+      <li>increase specificity;</li>
+      <li>including duplicating the class selector;</li>
+      <li>use !important;</li>
+      <li>&hellip; what else?</li>
+    </ul>
+  </p-notes>
+</p-slide>
+<p-slide class="gradient-3 center" style="line-height: 1;">
+  <p-notes>We're already familiar with the concept of layers</p-notes>
+  <p-fragment index="4">
+    <div><strong>!important</strong> User Agent styles<br>&#128899;</div>
+  </p-fragment>
+  <p-fragment index="3">
+    <div><strong>!important</strong> User styles<br>&#128899;</div>
+  </p-fragment>
+  <p-fragment index="2">
+    <div><strong>!important</strong> Author styles<br>&#128899;</div>
+  </p-fragment>
+  <div>Author styles</div>
+  <p-fragment index="0">
+    <div>&#128899;<br>User styles</div>
+  </p-fragment>
+  <p-fragment index="1">
+    <div>&#128899;<br>User Agent styles</div>
+  </p-fragment>
+  <p-fragment index="5">
+    <img
+      src="img/marker-circle.svg#svgView(preserveAspectRatio(none))"
+      alt="A marker circle around the !important Author styles and Author style"
+      class="from-above"
+      style="top: 32%; width: 16em; left: 20%; height: 5em;"
+    />
+    <p-notes>Our job is on the middle two.</p-notes>
+    <p-notes>All out stylesheets clash here, so we'd like some order. That's where @layer come into play</p-notes>
+  </p-fragment>
+</p-slide>
+<p-slide class="gradient-3" style="line-height: 1;">
+  <div class="items-center content-center" grid="2" style="gap: .5em;">
+    <div>
+      <strong>!important</strong> Author styles
+    </div>
+    <p-fragment index="7">
+      <div class="flex align-center" style="gap: .5em;">
+        <svg viewBox="4 -1 12 22" style="width: 2.4em">
+          <path d="M0,10h20M0,10C20,10 0,0 20,0M0,10C15,10 5,5 20,5M0,10C20,10 0,20 20,20M0,10C15,10 5,15 20,15"
+            stroke="currentColor" fill="none" />
+        </svg>
+        <div>
+          <p-fragment index="8"><strong>!scaffold</strong></p-fragment><br>
+          <p-fragment index="9"><strong>!utilities</strong></p-fragment><br>
+          <p-fragment index="10"><strong>!component</strong></p-fragment><br>
+          <p-fragment index="11"><strong>!<em>no name</em></strong></p-fragment><br>
+          <p-fragment index="11"><strong>!<em>no layer</em></strong></p-fragment>
+        </div>
+      </div>
+    </p-fragment>
+    <div style="margin-inline-start: 6em;">&#128899;</div>
+    <div class="col-1" style="justify-self: end;">Author styles</div>
+    <p-fragment index="0">
+      <div class="flex align-center" style="gap: .5em;">
+        <svg viewBox="4 -1 12 22" style="width: 2.4em">
+          <path d="M0,10h20M0,10C20,10 0,0 20,0M0,10C15,10 5,5 20,5M0,10C20,10 0,20 20,20M0,10C15,10 5,15 20,15"
+            stroke="currentColor" fill="none" />
+        </svg>
+        <div>
+          <p-fragment index="6"><em>no layer</em></p-fragment><br>
+          <p-fragment index="5"><em>no name</em></p-fragment><br>
+          <p-fragment index="4">component</p-fragment><br>
+          <p-fragment index="3">utilities</p-fragment><br>
+          <p-fragment index="2">scaffold</p-fragment>
+        </div>
+      </div>
+    </p-fragment>
+  </div>
+</p-slide>
+<p-slide>
+  <p-fragment index="0">
+    <img
+      src="img/marker-circle.svg#svgView(preserveAspectRatio(none))"
+      alt="A marker circle around the 'alice, bob' layer name list"
+      class="from-above"
+      style="top: 25%; width: 6.6em; left: 13%; height: 1.5em;"
+    />
+  </p-fragment>
+  <div class="two-columns">
+    <pre class="big"><code class="language-html">&lt;p>Hello, layers!&lt;/p></code>
+<code class="language-css">@layer alice, bob;
+@layer alice {
+  p { color: red; }
+}
+@layer bob {
+  p { color: blue; }
+}</code></pre>
+    <p-fragment index="1" class="center self-center" style="color: blue; font-size: 200%; font-weight: bold;">Hello, layers!</p-fragment>
+  </div>
+</p-slide>
+<p-slide>
+  <p-fragment index="0">
+    <img
+      src="img/marker-circle.svg#svgView(preserveAspectRatio(none))"
+      alt="A marker circle around the 'bob, alice' layer name list"
+      class="from-above"
+      style="top: 25%; width: 6.6em; left: 13%; height: 1.5em;"
+    />
+  </p-fragment>
+  <div class="two-columns">
+    <pre class="big"><code class="language-html">&lt;p>Hello, layers!&lt;/p></code>
+<code class="language-css">@layer bob, alice;
+@layer alice {
+  p { color: red; }
+}
+@layer bob {
+  p { color: blue; }
+}</code></pre>
+    <p-fragment index="1" class="center self-center" style="color: red; font-size: 200%; font-weight: bold;">Hello, layers!</p-fragment>
+  </div>
+</p-slide>
+<p-slide>
+  <p-fragment index="0">
+    <img
+      src="img/marker-circle.svg#svgView(preserveAspectRatio(none))"
+      alt="A marker circle around the unnamend layer"
+      class="from-above"
+      style="top: 33%; width: 4.3em; left: 3%; height: 1.5em;"
+    />
+  </p-fragment>
+  <div class="two-columns">
+    <pre class="big"><code class="language-html">&lt;p>Hello, layers!&lt;/p></code>
+<code class="language-css">@layer bob;
+@layer {
+  p { color: green; }
+}
+@layer bob {
+  p { color: blue; }
+}</code></pre>
+    <p-fragment index="1" class="center self-center" style="color: green; font-size: 200%; font-weight: bold;">Hello, layers!</p-fragment>
+  </div>
+</p-slide>
+<p-slide>
+  <p-fragment index="0">
+    <img
+      src="img/marker-circle.svg#svgView(preserveAspectRatio(none))"
+      alt="A marker circle around the unlayered rule"
+      class="from-above"
+      style="top: 57%; width: 2.5em; left: 3%; height: 1.5em;"
+    />
+  </p-fragment>
+  <div class="two-columns">
+    <pre class="big"><code class="language-html">&lt;p>Hello, layers!&lt;/p></code>
+<code class="language-css">@layer bob;
+@layer {
+  p { color: green; }
+}
+p {
+  color: orange;
+}</code></pre>
+    <p-fragment index="1" class="center self-center" style="color: orange; font-size: 200%; font-weight: bold;">Hello, layers!</p-fragment>
+  </div>
+</p-slide>
+<p-slide>
+  <p-fragment index="0">
+    <img
+      src="img/marker-circle.svg#svgView(preserveAspectRatio(none))"
+      alt="A marker circle around the special class name"
+      class="from-above"
+      style="top: 20%; width: 2.9em; left: 15%; height: 1em;"
+    />
+  </p-fragment>
+  <p-fragment index="1">
+    <img
+      src="img/marker-circle.svg#svgView(preserveAspectRatio(none))"
+      alt="A marker circle around the p.special selector"
+      class="from-above"
+      style="top: 57%; width: 3.5em; left: 6%; height: 1em;"
+    />
+  </p-fragment>
+  <div class="two-columns">
+    <pre><code class="language-html">&lt;p class="special">Hello, layers!&lt;/p></code>
+
+<code class="language-css">@layer bob, alice;
+@layer alice {
+  p { color: red; }
+}
+@layer bob {
+  p.special {
+    color: blue;
+  }
+}</code></pre>
+    <p-fragment index="2" class="center self-center" style="color: red; font-size: 200%; font-weight: bold;">Hello, layers!</p-fragment>
+  </div>
+</p-slide>
+<p-slide style="--slide-bg: radial-gradient( circle farthest-corner at 10% 20%,  rgba(100,43,115,1) 0%, rgba(4,0,4,1) 90% );">
+  <h1 class="center marker no-margins" style="color: color-mix(in srgb, var(--brand-color), white);">ITCSS</h1>
+  <div class="two-columns content-center">
+    <p-fragment>
+      <img src="img/triangle.webp" alt="Picture of an inverted triangle" class="from-left" style="height: 8em;">
+    </p-fragment>
+    <p-fragment class="marker" style="line-height: 1; color: color-mix(in srgb, var(--brand-color), white); width: max-content;">
+      <div class="from-right" style="margin: 1em 0 0 -1em;">
+        <div>Settings</div>
+        <div style="margin-left: -0.8em">Tools</div>
+        <div style="margin-left: -1.6em">Generic</div>
+        <div style="margin-left: -2.4em">Elements</div>
+        <div style="margin-left: -3.2em">Objects</div>
+        <div style="margin-left: -4em">Components</div>
+        <div style="margin-left: -4.8em">Utilities</div>
+      </div>
+    </p-fragment>
+  </div>
+</p-slide>
+<p-slide class="code-slide stack">
+  <pre class="self-center"><code class="language-css">import "bootstrap.css"</code>
+    <p-fragment><code class="language-css">                  layer(vendor);
+
+</code></p-fragment>
+    <p-fragment><code class="language-css">@layer vendor, component;
+    </code></p-fragment>
+    <p-fragment index="2"><code class="language-css">@layer component {
+  .modal { ... }
+}</code></p-fragment>
+  </pre>
+  <p-fragment index="1">
+    <img
+      src="img/marker-circle.svg#svgView(preserveAspectRatio(none))"
+      alt="A marker circle around the 'vendor' layer name before 'component'"
+      class="from-above"
+      style="top: 38%; width: 3.7em; left: 28%; height: 1.2em;"
+    />
+  </p-fragment>
+  <p-fragment index="3">
+    <pre class="self-center" style="margin-top: 2.8em;"><code class="language-css">import "styles.css"
+                  layer(legacy);
+
+@layer legacy, component;
+
+@layer component {
+  .button { ... }
+}</code></pre>
+  </p-fragment>
+  <p-notes>Or any other CSS library. Or maybe even legacy stylesheets!</p-notes>
+  <p-notes>Watch out for `import` though</p-notes>
+</p-slide><!--/slide:layers-->
 <!--slide:links--><p-slide>
   <h4 class="our-header">Links</h4>
   <ul class="links">
