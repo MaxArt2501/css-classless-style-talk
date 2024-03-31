@@ -465,7 +465,7 @@ export default function Card() {
     &lt;header>
       &lt;MyHeader title={title}/>
     &lt;/header>
-    &lt;section>{...children}&lt;/section>
+    &lt;section>{children}&lt;/section>
   &lt;/div>
 }</code></pre>
   <p-fragment style="margin-left: calc(var(--pixel-size) * -16)">
@@ -500,6 +500,21 @@ export default function Card() {
       alt="A marker circle around the section selector"
       class="from-above"
       style="top: 22%; width: 3em; left: 75%; height: 1em"
+    />
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <h1 class="center marker">&hellip; did you know?</h1>
+  <p-fragment class="self-center">
+    <pre class="from-bottom language-js big"><code>const paragraphChildren =
+  element.querySelectorAll(':scope > p');</code></pre>
+  </p-fragment>
+  <p-fragment>
+    <img
+      src="img/marker-circle.svg#svgView(preserveAspectRatio(none))"
+      alt="A marker circle around the :scope selector"
+      class="from-above"
+      style="top: 62%; width: 5em; left: 58%; height: 2em"
     />
   </p-fragment>
 </p-slide>

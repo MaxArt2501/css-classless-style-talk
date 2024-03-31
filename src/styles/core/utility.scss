@@ -2,30 +2,22 @@
   text-align: center;
 }
 
-.justify-start {
-  justify-content: flex-start;
-}
-.justify-center {
-  justify-content: center;
-}
-.justify-end {
-  justify-content: flex-end;
-}
-.justify-around {
-  justify-content: space-around;
-}
-
-.align-center {
-  align-items: center;
-}
-.self-center {
-  align-self: center;
-}
-.self-start {
-  align-self: start;
-}
-.self-end {
-  align-self: end;
+@each $alignment in center start end stretch {
+  .content-#{$alignment} {
+    place-content: $alignment;
+  }
+  .items-#{$alignment} {
+    place-items: $alignment;
+  }
+  .self-#{$alignment} {
+    align-self: $alignment;
+  }
+  .align-#{$alignment} {
+    align-items: $alignment;
+  }
+  .justify-#{$alignment} {
+    justify-content: $alignment;
+  }
 }
 
 .bold {
@@ -40,6 +32,9 @@
   vertical-align: middle;
 }
 
+.no-margins {
+  margin: 0;
+}
 .unpadded {
   padding: 0;
 }
@@ -89,6 +84,37 @@
   }
   100% {
     opacity: 0;
+  }
+}
+
+.flex {
+  display: flex;
+  &.column {
+    flex-direction: column;
+  }
+  &.wrap {
+    flex-wrap: wrap;
+  }
+}
+
+[grid] {
+  display: grid;
+}
+@for $i from 1 through 4 {
+  [grid='#{$i}'] {
+    grid-template-columns: repeat(#{$i}, minmax(0, max-content));
+  }
+  .col-#{$i} {
+    grid-column-start: #{$i};
+  }
+  .colspan-#{$i} {
+    grid-column-end: span #{$i};
+  }
+  .row-#{$i} {
+    grid-row-start: #{$i};
+  }
+  .rowspan-#{$i} {
+    grid-row-end: span #{$i};
   }
 }
 
@@ -210,4 +236,14 @@ $fade-border-image-y: linear-gradient(
   mask-image: $fade-border-image-x, $fade-border-image-y;
   -webkit-mask-composite: source-in;
   mask-composite: intersect;
+}
+
+.stack {
+  display: grid;
+  grid-template-areas: 'here';
+  place-items: stretch;
+
+  > * {
+    grid-area: here;
+  }
 }

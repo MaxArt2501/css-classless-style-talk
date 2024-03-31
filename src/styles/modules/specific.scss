@@ -43,6 +43,10 @@ h6 {
 .token.operator {
   background: transparent;
 }
+.language-css .token.string {
+  background: transparent;
+  filter: brightness(1.5);
+}
 
 .sunset-slide {
   --slide-bg: linear-gradient(to bottom, color-mix(in lab, black 70%, var(--brand-color)), transparent 55%) var(--brand-color);
@@ -96,12 +100,12 @@ h6 {
   &[aria-hidden='false'] {
     animation: zoom-code-slide 500ms 1 forwards;
 
-    > pre {
+    pre {
       animation: zoom-code 500ms 1 forwards;
     }
   }
 
-  > pre {
+  pre {
     height: 16em;
     margin: -2.5em 6em 0em 1.75em;
     border-radius: 2em / 7em;
@@ -134,6 +138,10 @@ h6 {
 .marker {
   font-family: 'Permanent marker', cursive;
   color: var(--brand-color);
+  font-weight: normal;
+}
+.pixel {
+  font-family: 'Public pixel', monospace;
   font-weight: normal;
 }
 
@@ -199,6 +207,9 @@ pre.display {
   > code {
     display: block;
     font-size: 75%;
+    &.big {
+      font-size: 100%;
+    }
   }
 }
 
@@ -219,10 +230,18 @@ pre.display {
 .gradient-1 {
   --slide-bg: #4158d0 linear-gradient(325deg, #4158d0 0%, #c850c0 46%, #ffcc70 100%);
 }
+.gradient-2 {
+  --slide-bg: linear-gradient(109.6deg, rgba(103, 30, 117, 1) 11.2%, rgba(252, 76, 2, 1) 91.1%);
+}
+.gradient-3 {
+  --slide-bg: linear-gradient(58.2deg, rgba(40, 91, 212, 0.73) -3%, rgba(171, 53, 163, 0.45) 49.3%, rgba(255, 204, 112, 0.37) 97.7%);
+}
+.gradient-4 {
+  --slide-bg: linear-gradient(174.2deg, rgba(255, 244, 228, 1) 7.1%, rgba(240, 246, 238, 1) 67.4%);
+}
 
 .c64-slide {
   --slide-bg: var(--brand-color);
-  font-family: 'Public Pixel', monospace;
   color: color-mix(in lab, var(--slide-bg), white);
   border: 1em solid;
 
@@ -254,6 +273,32 @@ pre.display {
     code {
       font-size: 50%;
       display: block;
+    }
+  }
+}
+
+@keyframes clip-left {
+  0% {
+    clip-path: inset(0 100% 0 0);
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+  }
+}
+@keyframes clip-right {
+  0% {
+    clip-path: inset(0 0 0 100%);
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+p-deck:not([mode='speaker']) {
+  @each $dir in left right {
+    p-fragment[aria-hidden='false'] .clip-#{$dir},
+    p-slide[aria-hidden='false'] .clip-#{$dir}:not(p-fragment > .clip-#{$dir}) {
+      animation: clip-#{$dir} var(--fragment-duration, 300ms) $motion-entrance-timing-fn 1 forwards;
     }
   }
 }
