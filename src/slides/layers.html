@@ -40,6 +40,7 @@
       style="top: 45%; width: 5.6em; left: 19.5%; height: 1em"
     />
     <p-notes>Are we breaking the "golden rule" of the 0.1.0 specificity? <em>Yes!</em> And it's about time!</p-notes>
+    <p-notes>Truth to be told, I've never considered that a "good" rule. A decent compromise, at best. But at the price of losing the power of the cascade.</p-notes>
   </p-fragment>
 </p-slide>
 <p-slide style="--slide-bg: url(../img/layers.jpg) 50% / cover">
@@ -175,8 +176,9 @@
       </div>
     </p-fragment>
   </div>
+  <p-notes>We can revert to use !important for the things that are actually important!</p-notes>
 </p-slide>
-<p-slide>
+<p-slide class="raw-code-slide">
   <p-fragment index="0">
     <img
       src="img/marker-circle.svg#svgView(preserveAspectRatio(none))"
@@ -197,7 +199,7 @@
     <p-fragment index="1" class="center self-center" style="color: blue; font-size: 200%; font-weight: bold;">Hello, layers!</p-fragment>
   </div>
 </p-slide>
-<p-slide>
+<p-slide class="raw-code-slide">
   <p-fragment index="0">
     <img
       src="img/marker-circle.svg#svgView(preserveAspectRatio(none))"
@@ -218,7 +220,7 @@
     <p-fragment index="1" class="center self-center" style="color: red; font-size: 200%; font-weight: bold;">Hello, layers!</p-fragment>
   </div>
 </p-slide>
-<p-slide>
+<p-slide class="raw-code-slide">
   <p-fragment index="0">
     <img
       src="img/marker-circle.svg#svgView(preserveAspectRatio(none))"
@@ -239,7 +241,7 @@
     <p-fragment index="1" class="center self-center" style="color: green; font-size: 200%; font-weight: bold;">Hello, layers!</p-fragment>
   </div>
 </p-slide>
-<p-slide>
+<p-slide class="raw-code-slide">
   <p-fragment index="0">
     <img
       src="img/marker-circle.svg#svgView(preserveAspectRatio(none))"
@@ -257,10 +259,10 @@
 p {
   color: orange;
 }</code></pre>
-    <p-fragment index="1" class="center self-center" style="color: orange; font-size: 200%; font-weight: bold;">Hello, layers!</p-fragment>
+    <p-fragment index="1" class="center self-center" style="color: #f60; font-size: 200%; font-weight: bold;">Hello, layers!</p-fragment>
   </div>
 </p-slide>
-<p-slide>
+<p-slide class="raw-code-slide">
   <p-fragment index="0">
     <img
       src="img/marker-circle.svg#svgView(preserveAspectRatio(none))"
@@ -343,3 +345,9 @@ p {
   <p-notes>Or any other CSS library. Or maybe even legacy stylesheets!</p-notes>
   <p-notes>Watch out for `import` though</p-notes>
 </p-slide>
+<p-slide>
+  <h1>revert-layer</h1>
+</p-slide>
+<p-slide class="chrome"><span>99</span></p-slide>
+<p-slide class="firefox"><span>97</span></p-slide>
+<p-slide class="safari"><span>15.4</span></p-slide>

@@ -1,0 +1,159 @@
+<p-slide class="c64-slide justify-start">
+  <h6>
+    10 PRINT "Can we do better?"<br />
+    20 INPUT X$<br />
+    30 IF X$ = "n" THEN GOTO 10<br />
+    > run<span class="cursor blink"></span>
+  </h6>
+</p-slide>
+<p-slide>
+  <img src="img/mouth.webp" alt="Poster picture of a woman's face with a open mout" class="full-media" />
+  <p-fragment class="marker" style="position: absolute; font-size: 5em; inset: 55% auto auto 70%">?</p-fragment>
+  <p-notes>Some meanings are difficult to put into words. Especially when elements get relevance depending on their <em>content</em>, rather than their <em>nature</em></p-notes>
+</p-slide>
+<p-slide style="--slide-bg: #454756">
+  <h4 class="self-center pixel no-margins" style="color: #fa8d7c; padding: 1em; border: 0.125em solid #3c3d46">:focus-within</h4>
+  <img src="img/fire.webp" alt="An animated picture of a 8-bit style person around a fireplace" style="height: 5em" />
+</p-slide>
+<p-slide class="raw-code-slide">
+  <div class="two-columns">
+    <pre class="display flex align-center" style="aspect-ratio: 1.1"><code class="language-css">.question {
+  outline: 1px solid gray;
+}
+.question:focus-within {
+  outline: 3px solid crimson;
+}</code></pre>
+    <p-fragment>
+      <style>
+        @scope {
+          .question {
+            color: #222;
+            outline: 0.1em solid;
+            padding: 0.5em;
+            margin-inline: 0.5em;
+          }
+          .input {
+            border: 0.1em solid;
+            border-radius: 0.25em;
+            height: 1.5em;
+            background: white;
+          }
+          .focus-within {
+            outline: 0.3em solid crimson;
+            margin-bottom: 1em;
+
+            .input {
+              box-shadow: 0 0 0.25em blue;
+            }
+            .input::before {
+              content: '|';
+              line-height: 1.2em;
+              margin: 0.25em;
+              animation: blink 1s steps(1) infinite;
+            }
+          }
+        }
+      </style>
+      <div class="question focus-within">
+        <label>Name</label>
+        <div class="input"></div>
+      </div>
+      <div class="question">
+        <label>Email</label>
+        <div class="input"></div>
+      </div>
+    </p-fragment>
+  </div>
+</p-slide>
+<p-slide>
+  <h1 class="our-header" style="font-size: 500%">:has()</h1>
+</p-slide>
+<p-slide class="gradient-3 stack">
+  <pre class="self-center big"><code class="language-css">figure.with-caption {
+  padding: 0.5rem;
+}</code></pre>
+  <p-fragment class="big-x" style="width: 8em; position: static; place-self: center;"></p-fragment>
+  <p-fragment class="self-center" style="position: relative;">
+    <pre class="big"><code class="language-css">figure:has(figcaption) {
+  padding: 0.5rem;
+}</code></pre></p-fragment>
+</p-slide>
+<p-slide class="gradient-3 stack">
+  <pre class="self-center big"><code class="language-css">ul {
+  gap: 0.5rem;
+}
+ul.many-items {
+  gap: 0.1rem;
+}</code></pre>
+  <p-fragment class="big-x" style="width: 8em; position: static; place-self: center;"></p-fragment>
+  <p-fragment class="self-center" style="position: relative;">
+    <pre class="big"><code class="language-css">ul {
+  gap: 0.5rem;
+}
+ul:has(:nth-child(n + 3)) {
+  gap: 0.1rem;
+}</code></pre></p-fragment>
+</p-slide>
+<p-slide class="gradient-3 stack">
+  <pre class="self-center big"><code class="language-css">body.open-modal {
+  overflow: hidden;
+}</code></pre>
+  <p-fragment class="big-x" style="width: 8em; position: static; place-self: center;"></p-fragment>
+  <p-fragment class="self-center" style="position: relative;">
+    <pre class="big"><code class="language-css">body:has(dialog[open]) {
+  overflow: hidden;
+}</code></pre></p-fragment>
+</p-slide>
+<p-slide class="gradient-3 stack">
+  <pre class="self-center big"><code class="language-css">h2.with-hero-pic {
+  border-block-end: none;
+  margin-block-end: 0.5rem;
+}</code></pre>
+    <p-fragment class="big-x" style="width: 8em; position: static; place-self: center;"></p-fragment>
+    <p-fragment class="self-center" style="position: relative;">
+    <pre class="big"><code class="language-css">h2:has(+ picture) {
+  border-block-end: none;
+  margin-block-end: 0.5rem;</p-fragment>
+}</code></pre>
+</p-slide>
+<p-slide class="gradient-3 stack">
+  <pre class="self-center big"><code class="language-css">fieldset.invalid-fields {
+  background-color: lightcoral;
+}</code></pre>
+  <p-fragment class="big-x" style="width: 8em; position: static; place-self: center;"></p-fragment>
+  <p-fragment class="self-center" style="position: relative;">
+    <pre class="big"><code class="language-css">fieldset:has(:invalid) {
+  background-color: lightcoral;
+}</code></pre></p-fragment>
+</p-slide>
+<p-slide class="gradient-3 stack">
+  <pre class="self-center big"><code class="language-css">.question:focus-within {
+  outline: 3px solid crimson;
+}</code></pre>
+  <p-fragment class="big-x" style="width: 8em; position: static; place-self: center;"></p-fragment>
+  <p-fragment class="self-center" style="position: relative;">
+    <pre class="big"><code class="language-css">.question:has(:focus-visible) {
+  outline: 3px solid crimson;
+}</code></pre>
+</p-slide>
+<p-slide class="chrome"><span>108</span></p-slide>
+<p-slide class="firefox"><span>121</span></p-slide>
+<p-slide class="safari"><span>15.4</span></p-slide>
+<p-slide>
+  <h1 class="our-header" style="font-size: 500%">Nesting</h1>
+  <p-notes>How does nesting help us with writing less classes?</p-notes>
+  <p-notes>It helps us making use of the cascade again!</p-notes>
+</p-slide>
+<p-slide class="gradient-3 stack">
+  <pre class="self-center big"><code class="language-css">.question:focus-within {
+  outline: 3px solid crimson;
+}</code></pre>
+  <p-fragment class="big-x" style="width: 8em; position: static; place-self: center;"></p-fragment>
+  <p-fragment class="self-center" style="position: relative;">
+    <pre class="big"><code class="language-css">.question:has(:focus-visible) {
+  outline: 3px solid crimson;
+}</code></pre>
+</p-slide>
+<p-slide class="chrome"><span>120</span></p-slide>
+<p-slide class="firefox"><span>117</span></p-slide>
+<p-slide class="safari"><span>17.2</span></p-slide>

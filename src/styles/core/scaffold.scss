@@ -10,7 +10,7 @@ p-slide {
 }
 
 pre p-fragment {
-  opacity: 0.2;
+  opacity: 0.1;
 
   &[aria-hidden='true'] p-fragment,
   &[aria-hidden='false'] {
@@ -41,7 +41,7 @@ p {
 ul {
   margin: 0;
   padding: 0;
-  list-style: none;
+  list-style-type: '';
 }
 
 pre[class*='language-'] {

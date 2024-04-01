@@ -238,7 +238,7 @@ $fade-border-image-y: linear-gradient(
   mask-composite: intersect;
 }
 
-.stack {
+.stack:not(p-slide[aria-hidden='true']) {
   display: grid;
   grid-template-areas: 'here';
   place-items: stretch;

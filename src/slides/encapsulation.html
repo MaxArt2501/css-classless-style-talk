@@ -102,6 +102,15 @@ ul + ul {
 }</code></pre>
     </p-fragment>
   </div>
+</p-slide>
+<p-slide class="title-slide">
+  <h3 class="marker">If there's a meaning</h3>
+  <p-fragment>
+    <h1 class="marker">there's a <code>role</code></h1>
+  </p-fragment>
+  <p-fragment>
+    <h5 class="marker">or an <code>aria-*</code> attribute</h1>
+  </p-fragment>
   <p-notes>
     <p>That's what I mean with "classless" style. You probably don't need to create classes at all, you don't need to invent names. Naming things is <em>hard</em>.</p>
     <p>I've said this back in 2018, but <em>repetita juvant</em>&hellip;</p>
@@ -111,9 +120,17 @@ ul + ul {
 <p-slide class="justify-start" style="--slide-bg: linear-gradient(#0d0140 50%, black 0)">
   <h1 class="center outline marker" style="color: #39c5ff">Shadow DOM</h1>
   <img src="img/street-shadow.webp" alt="" class="full-media" />
+  <p-notes>
+    The problem is that Shadow DOM's encapsulation is very strong. Not everyone is comfortable with it, and IMO it's not always the best choice.
+    Ok for a UI Kit where you need visual consistency, not so much for pages, forms and widgets.
+  </p-notes>
 </p-slide>
 <p-slide style="--slide-bg: #0f0f11">
   <img src="img/angular.svg" alt="Angular logo" style="height: 10em; filter: drop-shadow(0 0 0.5em #ff31d980)" />
+  <p-notes>
+    Angular, with its new 80's look logo that fits so much this presentation, has always offered great flexibility for its encapsulation solutions,
+    providing the Shadow DOM, emulated encapsulation (default one) and no encapsulation at all. The latter two allow us to use global stylesheets.
+  </p-notes>
 </p-slide>
 <p-slide style="--slide-bg: #0f0f11">
   <img src="img/vue.svg" alt="Vue logo" style="height: 10em; filter: drop-shadow(0 0 0.5em #41b88380)" />
@@ -163,6 +180,12 @@ export default function Card() {
   &lt;/span>
 &lt;/header>
 ...</code></pre>
+  <p-fragment style="grid-row: 2;">
+    <pre class="display bottom-left language-css"><code>header span {
+...
+}
+...</code></pre>
+  </p-fragment>
   <p-fragment>
     <pre class="display top-right language-html"><code>&lt;header data-v-123abc>
   &lt;span data-v-123abc>
@@ -184,12 +207,6 @@ export default function Card() {
       class="from-above"
       style="top: 22%; width: 4em; left: 57%; height: 1em"
     />
-  </p-fragment>
-  <p-fragment>
-    <pre class="display bottom-left language-css"><code>header span {
-  ...
-}
-...</code></pre>
   </p-fragment>
   <p-fragment>
     <pre class="display bottom-right language-css"><code>header[data-v-123abc] span[data-v-123abc] {
@@ -219,6 +236,12 @@ export default function Card() {
   &lt;/span>
 &lt;/header>
 ...</code></pre>
+  <p-fragment style="grid-row: 2;">
+    <pre class="display bottom-left language-css"><code>.header span {
+...
+}
+...</code></pre>
+  </p-fragment>
   <p-fragment>
     <pre class="display top-right language-html"><code>&lt;header class="styles_header_123abc">
   &lt;span>
@@ -242,12 +265,6 @@ export default function Card() {
       class="from-above"
       style="top: 22%; width: 2em; left: 54%; height: 1em"
     />
-  </p-fragment>
-  <p-fragment>
-    <pre class="display bottom-left language-css"><code>.header span {
-  ...
-}
-...</code></pre>
   </p-fragment>
   <p-fragment>
     <pre class="display bottom-right language-css"><code>.styles_header_123abc span {
@@ -296,12 +313,13 @@ export default function Card() {
     <pre class="language-html"><code>&lt;style>
   p { color: rebeccapurple; }
 &lt;/style>
+
 &lt;p>I am purple!&lt;/p>
 &lt;section>
   &lt;p>What color am I?&lt;/p></code><p-fragment><code class="language-html">
   &lt;style>
     @scope {
-      p { color: deepskyblue; }
+      p { color: navy; }
     }
   &lt;/style></code></p-fragment>
 <code class="language-html">&lt;/section></code></pre>
@@ -312,11 +330,11 @@ export default function Card() {
           <style>
             @scope {
               :scope {
-                outline: 0.1em solid deepskyblue;
+                outline: 0.1em solid navy;
                 padding: 1lh 1em;
               }
               p {
-                color: deepskyblue;
+                color: navy;
                 font-weight: bold;
                 margin: 0;
               }
@@ -339,7 +357,7 @@ export default function Card() {
   &lt;style>
     @scope {
       :scope {
-        color: deepskyblue;
+        color: navy;
         outline: 0.1em solid;
         padding: 1lh 1em;
       }
@@ -350,7 +368,7 @@ export default function Card() {
       <style>
         @scope {
           :scope {
-            color: deepskyblue;
+            color: navy;
             outline: 0.1em solid;
             padding: 1lh 1em;
           }
@@ -381,7 +399,7 @@ export default function Card() {
     ...
     @scope (.invert) {
       :scope {
-        backgound: deepskyblue;
+        backgound: navy;
         color: white;
       }
     }
@@ -392,7 +410,7 @@ export default function Card() {
         <style>
           @scope (.invert) {
             :scope {
-              background: deepskyblue;
+              background: navy;
               color: white;
               outline: 0.1em solid;
               padding: 1lh 1em;
@@ -518,3 +536,6 @@ export default function Card() {
     />
   </p-fragment>
 </p-slide>
+<p-slide class="chrome"><span>118</span></p-slide>
+<p-slide class="firefox"><span>:(</span></p-slide>
+<p-slide class="safari"><span>17.4</span></p-slide>
