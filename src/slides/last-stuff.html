@@ -1,0 +1,98 @@
+<p-slide class="title-slide">
+  <h1 class="center">What about&hellip; colors?</h1>
+</p-slide>
+<p-slide>
+  <h1 class="our-header from-left" style="font-size: 400%">color-mix</h1>
+</p-slide>
+<p-slide class="gradient-1 center" style="--brand-color: white; text-shadow: rgba(0, 0, 0, 0.533) 0px 0px 0.5em">
+  <p-fragment>
+    <h2 class="from-bottom marker no-margins">Darker/lighter colors</h2>
+    <pre style="width: min-content; margin: auto"><code class="language-css">h1 {
+  color: color-mix(in lab, var(--brand-color), black 20%);
+  background: color-mix(in lab, var(--brand-color), white 70%);
+}</code></pre>
+  </p-fragment>
+  <p-fragment>
+    <h2 class="from-bottom marker no-margins">Semi-transparent colors</h2>
+    <pre style="width: min-content; margin: auto"><code class="language-css">header {
+  background: color-mix(in lab, var(--brand-color), transparent 70%);
+}</code></pre>
+  </p-fragment>
+</p-slide>
+<p-slide class="chrome"><span>111</span></p-slide>
+<p-slide class="firefox"><span>113</span></p-slide>
+<p-slide class="safari"><span>16.2</span></p-slide>
+<p-slide>
+  <h1 class="our-header from-left" style="font-size: 300%">Relative colors</h1>
+</p-slide>
+<p-slide class="chrome">
+  <p-fragment class="self-center" style="position: relative">
+    <pre class="big"><code class="language-css">:root {
+  accent-color: hsl(
+    from var(--brand-color),
+    calc(h + 90deg) s l
+  );
+}</code></pre>
+  </p-fragment>
+</p-slide>
+<p-slide class="chrome"><span>119</span></p-slide>
+<p-slide class="firefox"><span>:(</span></p-slide>
+<p-slide class="safari"><span>16.4</span></p-slide>
+<p-slide>
+  <p-fragment>
+    <img
+      src="img/marker-circle.svg#svgView(preserveAspectRatio(none))"
+      alt="A marker circle around the word 'style'"
+      class="from-above"
+      style="top: 46%; width: 9em; left: 9%; height: 5em;"
+    />
+  </p-fragment>
+  <p-notes>Not just CQs, but CSQs. Talked about them last year, so I'll be brief.</p-notes>
+  <p-notes>CSQs could be used only with custom properties at the moment, but IMO they'll stay like that. Still useful, though!</p-notes>
+  <h1 class="our-header" style="font-size: 340%">Container style queries</h1>
+</p-slide>
+<p-slide class="raw-code-slide">
+  <pre class="display ratio self-center flex column justify-center"><code class="language-css big">@container style(--theme: dark) {
+    p { ... }
+  }
+</code>
+<p-fragment><code class="language-css big">@container style(--theme: rainbows) {
+  header { ... }
+}</code></pre>
+  <p-notes>We have always used custom properties to deliver single values: colors, spacings, sizes, etc.</p-notes>
+  <p-notes>With CSQ, we define a possible <em>variant</em> of our styles - and not just a single value - with the name and meaning we want.</p-notes>
+  <p-notes>We could use a class, but classes are not inherited.</p-notes>
+</p-slide>
+<p-slide class="raw-code-slide">
+  <pre class="display ratio self-center flex column justify-center"><code class="language-css big">@container style(--content: minimal) {
+  picture { display: none; }
+}
+
+@container style(--content: verbose) {
+  footer { display: block; }
+}</code></pre>
+</p-slide>
+<p-slide class="raw-code-slide">
+  <pre class="display ratio self-center flex column justify-center"><code class="language-css big">@container style(--spacing: loose) {
+  main { padding: 2rem; }
+}
+
+@container style(--spacing: compact) {
+  main { padding: 0.5rem; }
+}</code></pre>
+</p-slide>
+<p-slide class="raw-code-slide">
+  <pre class="display self-center flex column justify-center"><code class="language-css big">@container style(--orientation: vertical) {
+  section { flex-direction: column; }
+}
+
+@container style(--orientation: auto)
+  and (width > 10rem) {
+  section {
+    flex-direction: row;
+  }
+}</code></pre>
+</p-slide>
+<p-slide class="chrome"><span>111</span></p-slide>
+<p-slide class="firefox"><span>:(</span></p-slide>
+<p-slide class="safari"><span>TP190</span></p-slide>
