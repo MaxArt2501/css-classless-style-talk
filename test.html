@@ -45,6 +45,16 @@
       /* @scope (.scoped) {
         @layer bar, foo;
       } */
+      ul {
+        & & {
+          color: red;
+        }
+      }
+      ul {
+        li {
+          text-transform: uppercase;
+        }
+      }
     </style>
   </head>
   <body>
@@ -53,9 +63,23 @@
       <style>
         @scope {
           @layer bar, foo;
+          & {
+            text-transform: uppercase;
+          }
+          :scope {
+            text-decoration: underline;
+          }
         }
       </style>
       <p class="special">Hello, scope!</p>
     </div>
+    <ul>
+      <li>
+        Hello,
+        <ul>
+          <li>nest!</li>
+        </ul>
+      </li>
+    </ul>
   </body>
 </html>

@@ -740,7 +740,7 @@ export default function Card() {
 </p-slide>
 <p-slide class="gradient-2">
   <div class="two-columns">
-    <pre class="display" style="margin: 0 auto; aspect-ratio: 1.1; width: min-content"><code class="language-html big">
+    <pre class="display ratio" style="margin: 0 auto; width: min-content"><code class="language-html big">
 &ltp class="special">
   Hello, world!
 &lt/p></code></pre>
@@ -1038,7 +1038,7 @@ p {
 </p-slide>
 <p-slide class="raw-code-slide">
   <div class="two-columns">
-    <pre class="display flex align-center" style="aspect-ratio: 1.1"><code class="language-css">.question {
+    <pre class="display ratio flex align-center"><code class="language-css">.question {
   outline: 1px solid gray;
 }
 .question:focus-within {
@@ -1161,23 +1161,201 @@ ul:has(:nth-child(n + 3)) {
 <p-slide class="firefox"><span>121</span></p-slide>
 <p-slide class="safari"><span>15.4</span></p-slide>
 <p-slide>
-  <h1 class="our-header" style="font-size: 500%">Nesting</h1>
   <p-notes>How does nesting help us with writing less classes?</p-notes>
   <p-notes>It helps us making use of the cascade again!</p-notes>
+  <h1 class="our-header" style="font-size: 500%">Nesting</h1>
 </p-slide>
-<p-slide class="gradient-3 stack">
-  <pre class="self-center big"><code class="language-css">.question:focus-within {
-  outline: 3px solid crimson;
+<p-slide>
+  <img src="img/waterfall.avif" alt="Picture of a person enjoying being under a waterfall" class="full-media">
+  <p-notes>The cascade is part of the game, it's the first letter, it won't go away, so let it be the tool it's meant to be</p-notes>
+  <p-notes>Why did it become a problem? Because more than a cascade, it became a flood. But now we can build the banks to contain it</p-notes>
+</p-slide>
+<p-slide class="gradient-1">
+  <div class="two-columns">
+    <pre class="display"><code class="language-css big">footer {
+  display: flex;
+}
+footer button {
+  color: ebony;
+  background: ivory;
 }</code></pre>
-  <p-fragment class="big-x" style="width: 8em; position: static; place-self: center;"></p-fragment>
-  <p-fragment class="self-center" style="position: relative;">
-    <pre class="big"><code class="language-css">.question:has(:focus-visible) {
-  outline: 3px solid crimson;
+    <p-fragment>
+      <pre class="display"><code class="language-css big">footer {
+  display: flex;
+  & button {
+    color: ebony;
+    background: ivory;
+  }
+}</code></pre>
+    </p-fragment>
+  </div>
+  <p-notes>There shoudn't be much difference, but nesting is so nice! And they worked on the spec so well we almost feels at home coming from SASS</p-notes>
+  <p-notes>It's an expressive way to define a contextual style</p-notes>
+</p-slide>
+<p-slide class="gradient-1">
+  <div class="two-columns">
+    <pre class="display"><code class="language-css big">
+article {
+  ul, ol {
+    display: flex;
+  }
+}
+
+</code></pre>
+  <p-fragment>
+    <pre class="display"><code class="language-css big">
+
+article :is(ul, ol) {
+  display: flex;
+}
+
+
+</code></pre>
+   </p-fragment>
+  </div>
+</p-slide>
+<p-slide class="gradient-1 code-4-split">
+  <pre class="display top-left language-css"><code>ul {
+  & & {
+    list-style: square;
+  }
+}</code></pre>
+    <p-fragment style="grid-row: 2;">
+      <pre class="display bottom-left language-css"><code>button {
+  footer > & {
+    margin-inline-start: auto;
+  }
+}</code></pre>
+    </p-fragment>
+    <p-fragment>
+      <pre class="display top-right language-css"><code>header {
+  dialog & button {
+    ...
+  }
+}</code></pre>
+    </p-fragment>
+    <p-fragment class="big-x" style="top: 7%; left: 55%; width: 8em;"></p-fragment>
+    <p-fragment>
+      <pre class="display bottom-right language-css"><code>.modal {
+  &__backdrop {
+    ...
+  }
+}</code></pre>
+  </p-fragment>
+  <p-fragment class="big-x" style="top: 40%; left: 55%; width: 8em;"></p-fragment>
+</p-slide>
+<p-slide class="gradient-4">
+  <pre class="self-center big"><code class="language-css">& {
+  font-family: system-ui, sans-serif;
+}
+
+@scope (my-card) {
+  & & {
+    padding: 0.5rem;
+  }
 }</code></pre>
 </p-slide>
 <p-slide class="chrome"><span>120</span></p-slide>
 <p-slide class="firefox"><span>117</span></p-slide>
 <p-slide class="safari"><span>17.2</span></p-slide><!--/slide:has-nest-->
+<!--slide:last-stuff--><p-slide class="title-slide">
+  <h1 class="center">What about&hellip; colors?</h1>
+</p-slide>
+<p-slide>
+  <h1 class="our-header from-left" style="font-size: 400%">color-mix</h1>
+</p-slide>
+<p-slide class="gradient-1 center" style="--brand-color: white; text-shadow: rgba(0, 0, 0, 0.533) 0px 0px 0.5em">
+  <p-fragment>
+    <h2 class="from-bottom marker no-margins">Darker/lighter colors</h2>
+    <pre style="width: min-content; margin: auto"><code class="language-css">h1 {
+  color: color-mix(in lab, var(--brand-color), black 20%);
+  background: color-mix(in lab, var(--brand-color), white 70%);
+}</code></pre>
+  </p-fragment>
+  <p-fragment>
+    <h2 class="from-bottom marker no-margins">Semi-transparent colors</h2>
+    <pre style="width: min-content; margin: auto"><code class="language-css">header {
+  background: color-mix(in lab, var(--brand-color), transparent 70%);
+}</code></pre>
+  </p-fragment>
+</p-slide>
+<p-slide class="chrome"><span>111</span></p-slide>
+<p-slide class="firefox"><span>113</span></p-slide>
+<p-slide class="safari"><span>16.2</span></p-slide>
+<p-slide>
+  <h1 class="our-header from-left" style="font-size: 300%">Relative colors</h1>
+</p-slide>
+<p-slide class="chrome">
+  <p-fragment class="self-center" style="position: relative">
+    <pre class="big"><code class="language-css">:root {
+  accent-color: hsl(
+    from var(--brand-color),
+    calc(h + 90deg) s l
+  );
+}</code></pre>
+  </p-fragment>
+</p-slide>
+<p-slide class="chrome"><span>119</span></p-slide>
+<p-slide class="firefox"><span>:(</span></p-slide>
+<p-slide class="safari"><span>16.4</span></p-slide>
+<p-slide>
+  <p-fragment>
+    <img
+      src="img/marker-circle.svg#svgView(preserveAspectRatio(none))"
+      alt="A marker circle around the word 'style'"
+      class="from-above"
+      style="top: 46%; width: 9em; left: 9%; height: 5em;"
+    />
+  </p-fragment>
+  <p-notes>Not just CQs, but CSQs. Talked about them last year, so I'll be brief.</p-notes>
+  <p-notes>CSQs could be used only with custom properties at the moment, but IMO they'll stay like that. Still useful, though!</p-notes>
+  <h1 class="our-header" style="font-size: 340%">Container style queries</h1>
+</p-slide>
+<p-slide class="raw-code-slide">
+  <pre class="display ratio self-center flex column justify-center"><code class="language-css big">@container style(--theme: dark) {
+    p { ... }
+  }
+</code>
+<p-fragment><code class="language-css big">@container style(--theme: rainbows) {
+  header { ... }
+}</code></pre>
+  <p-notes>We have always used custom properties to deliver single values: colors, spacings, sizes, etc.</p-notes>
+  <p-notes>With CSQ, we define a possible <em>variant</em> of our styles - and not just a single value - with the name and meaning we want.</p-notes>
+  <p-notes>We could use a class, but classes are not inherited.</p-notes>
+</p-slide>
+<p-slide class="raw-code-slide">
+  <pre class="display ratio self-center flex column justify-center"><code class="language-css big">@container style(--content: minimal) {
+  picture { display: none; }
+}
+
+@container style(--content: verbose) {
+  footer { display: block; }
+}</code></pre>
+</p-slide>
+<p-slide class="raw-code-slide">
+  <pre class="display ratio self-center flex column justify-center"><code class="language-css big">@container style(--spacing: loose) {
+  main { padding: 2rem; }
+}
+
+@container style(--spacing: compact) {
+  main { padding: 0.5rem; }
+}</code></pre>
+</p-slide>
+<p-slide class="raw-code-slide">
+  <pre class="display self-center flex column justify-center"><code class="language-css big">@container style(--orientation: vertical) {
+  section { flex-direction: column; }
+}
+
+@container style(--orientation: auto)
+  and (width > 10rem) {
+  section {
+    flex-direction: row;
+  }
+}</code></pre>
+</p-slide>
+<p-slide class="chrome"><span>111</span></p-slide>
+<p-slide class="firefox"><span>:(</span></p-slide>
+<p-slide class="safari"><span>TP190</span></p-slide><!--/slide:last-stuff-->
 <!--slide:links--><p-slide>
   <h4 class="our-header marker">Links</h4>
   <ul class="links">
@@ -1207,6 +1385,10 @@ ul:has(:nth-child(n + 3)) {
     <li>
       🔗 How to Kill the Cascade (Robin Rendle)
       <a href="https://robinrendle.com/the-cascade/017-how-to-kill-the-cascade/">robinrendle.com/the-cascade/017-how-to-kill-the-cascade/</a>
+    </li>
+    <li>
+      🔗 Dynamic Color Manipulation with CSS Relative Colors
+      <a href="https://blog.jim-nielsen.com/2021/css-relative-colors/">blog.jim-nielsen.com/2021/css-relative-colors/</a>
     </li>
   </ul>
 </p-slide><!--/slide:links-->
