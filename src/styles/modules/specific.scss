@@ -59,6 +59,10 @@ code[class*='language-'],
 pre[class*='language-'] {
   color: #f9c;
 }
+// Selectors and properties with the same color, why?! Let's change it
+.token.selector {
+  color: #99f;
+}
 
 .sunset-slide {
   --slide-bg: linear-gradient(to bottom, color-mix(in lab, black 70%, var(--brand-color)), transparent 55%) var(--brand-color);
@@ -187,6 +191,10 @@ pre.display {
   padding-block: 0.5em;
   background-clip: padding-box;
 
+  &.ratio {
+    aspect-ratio: 1.1;
+  }
+
   @each $block in top bottom {
     @each $inline in left right {
       &.#{$block}-#{$inline} {
@@ -249,7 +257,7 @@ pre.display {
   --slide-bg: linear-gradient(58.2deg, rgba(40, 91, 212, 0.73) -3%, rgba(171, 53, 163, 0.45) 49.3%, rgba(255, 204, 112, 0.37) 97.7%);
 }
 .gradient-4 {
-  --slide-bg: linear-gradient(174.2deg, rgba(255, 244, 228, 1) 7.1%, rgba(240, 246, 238, 1) 67.4%);
+  --slide-bg: linear-gradient(109.6deg, rgba(254, 253, 205, 1) 11.2%, rgba(163, 230, 255, 1) 91.1%);
 }
 
 .c64-slide {
