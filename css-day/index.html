@@ -69,15 +69,23 @@
     </h4>
   </div>
 </p-slide>
+<p-slide style="--slide-bg: #682769">
+  <a href="https://gellify.bamboohr.com/careers" target="_blank" rel="noopener">
+    <img
+      src="img/join-us.jpg"
+      alt="Picture with title 'GELLIFY ITALIA Work with us: Scan the QRcode to join our Purple Team' followed by a QR Code pointing to https://gellify.bamboohr.com/careers"
+      class="full-media"
+    />
+  </a>
+</p-slide>
 <p-slide class="center">
   <h3>You can find these slides at</h3>
   <img src="img/qr-slides.svg" alt="QR Code for the presentation's link" style="height: 7em; margin-bottom: 1em" />
   <a href="https://maxart2501.github.io/css-classless-style-talk/css-day/">maxart2501.github.io/css-classless-style-talk/css-day/</a>
 </p-slide><!--/slide:cover-->
-<!--slide:history--><p-slide class="sunset-slide">
-  <h2 class="light">How far we've come&hellip;</h2>
-  <div class="sun"></div>
-  <div class="surface"></div>
+<!--slide:history--><p-slide class="justify-start" style="--slide-bg: #1a1346">
+  <h2 class="marker center" style="margin-top: -0.25em">How far we've come&hellip;</h2>
+  <img src="img/how-far.webp" alt="Picture of a car and a person on the road at sunset" class="full-media" />
 </p-slide>
 <p-slide class="code-slide">
   <pre class="self-center"><code class="language-html">&lt;center>
@@ -473,9 +481,9 @@ export default function Card() {
     </p-fragment>
   </div>
   <p-notes>Styles have an <em>upper bound</em>: won't spill outside the scoping node (the section element in this case)</p-notes>
-</p-slide>
-<p-slide class="title-slide">
-  <h1 class="marker">It gets better.</h1>
+  <p-fragment class="overlay-banner">
+    <h1 class="marker center clip-left" style="color: white;">It gets better.</h1>
+  </p-fragment>
 </p-slide>
 <p-slide class="raw-code-slide">
   <div class="two-columns">
@@ -664,7 +672,7 @@ export default function Card() {
   </p-fragment>
 </p-slide>
 <p-slide class="chrome"><span>118</span></p-slide>
-<p-slide class="firefox"><span>:(</span></p-slide>
+<p-slide class="firefox"><span><img src="img/dino.svg"></span></p-slide>
 <p-slide class="safari"><span>17.4</span></p-slide><!--/slide:encapsulation-->
 <!--slide:layers--><p-slide>
   <h1 class="center marker">Is that enough?</h1>
@@ -711,7 +719,7 @@ export default function Card() {
     <p-notes>Truth to be told, I've never considered that a "good" rule. A decent compromise, at best. But at the price of losing the power of the cascade.</p-notes>
   </p-fragment>
 </p-slide>
-<p-slide style="--slide-bg: url(../img/layers.jpg) 50% / cover">
+<p-slide style="--slide-bg: #0e0321; background: url(../img/layers.jpg) 50% / cover">
   <p-fragment
     ><h1
       class="center marker uppercase outline clip-left"
@@ -1013,8 +1021,52 @@ p {
   <p-notes>Or any other CSS library. Or maybe even legacy stylesheets!</p-notes>
   <p-notes>Watch out for `import` though</p-notes>
 </p-slide>
-<p-slide>
-  <h1>revert-layer</h1>
+<p-slide class="title-slide">
+  <h1>One more thing&hellip;</h1>
+</p-slide>
+<p-slide class="raw-code-slide">
+  <h2 class="center">revert-layer</h2>
+  <div class="stack self-center">
+    <p-fragment>
+      <pre class="display"><code class="language-css big">
+
+* {
+  all: revert;
+}
+
+
+</code></pre>
+    </p-fragment>
+    <p-fragment>
+      <pre class="display"><code class="language-css big">
+
+* {
+  all: revert-layer;
+}
+
+
+</code></pre>
+    </p-fragment>
+    <p-fragment>
+      <pre class="display"><code class="language-html big">&lt;section>
+  &lt;style>@scope {
+    :scope, * {
+      all: revert-layer;
+    }
+  }&lt;/style>
+&lt;/section></code></pre>
+    </p-fragment>
+  </div>
+  <p-fragment>
+    <img
+      src="img/marker-circle.svg#svgView(preserveAspectRatio(none))"
+      alt="A marker circle around the 'revert-layer' property value"
+      class="from-above"
+      style="top: 50%; width: 5em; left: 46%; height: 1.5em;"
+    />
+  </p-fragment>
+  <p-notes>You may have noticed that all: unset sucks, because removes also many desirable and meaningful styles. revert-layer to the rescue!</p-notes>
+  <p-notes>Also allows us to shield our scoped styles from authored styles from outside. It's effectively shadow-DOM-level encapsulation!</p-notes>
 </p-slide>
 <p-slide class="chrome"><span>99</span></p-slide>
 <p-slide class="firefox"><span>97</span></p-slide>
@@ -1296,7 +1348,7 @@ article :is(ul, ol) {
   </p-fragment>
 </p-slide>
 <p-slide class="chrome"><span>119</span></p-slide>
-<p-slide class="firefox"><span>:(</span></p-slide>
+<p-slide class="firefox"><span><img src="img/dino.svg"></span></p-slide>
 <p-slide class="safari"><span>16.4</span></p-slide>
 <p-slide>
   <p-fragment>
@@ -1354,7 +1406,7 @@ article :is(ul, ol) {
 }</code></pre>
 </p-slide>
 <p-slide class="chrome"><span>111</span></p-slide>
-<p-slide class="firefox"><span>:(</span></p-slide>
+<p-slide class="firefox"><span><img src="img/dino.svg"></span></p-slide>
 <p-slide class="safari"><span>TP190</span></p-slide><!--/slide:last-stuff-->
 <!--slide:links--><p-slide>
   <h4 class="our-header marker">Links</h4>
@@ -1387,21 +1439,42 @@ article :is(ul, ol) {
       <a href="https://robinrendle.com/the-cascade/017-how-to-kill-the-cascade/">robinrendle.com/the-cascade/017-how-to-kill-the-cascade/</a>
     </li>
     <li>
+      🔗 Some use cases for revert-layer (Mayank)
+      <a href="https://www.mayank.co/blog/revert-layer">mayank.co/blog/revert-layer</a>
+    </li>
+  </ul>
+</p-slide>
+<p-slide>
+  <h4 class="our-header marker">Links</h4>
+  <ul class="links">
+    <li>
+      🔗 Level Up Your CSS Skills With The :has() Selector (S. Eckles)
+      <a href="https://www.smashingmagazine.com/2023/01/level-up-css-skills-has-selector/">smashingmagazine.com/2023/01/level-up-css-skills-has-selector/</a>
+    </li>
+    <li>
+      🔗 CSS Nesting (Ahmad Shadeed)
+      <a href="https://ishadeed.com/article/css-nesting/">ishadeed.com/article/css-nesting/</a>
+    </li>
+    <li>
       🔗 Dynamic Color Manipulation with CSS Relative Colors
       <a href="https://blog.jim-nielsen.com/2021/css-relative-colors/">blog.jim-nielsen.com/2021/css-relative-colors/</a>
     </li>
   </ul>
 </p-slide><!--/slide:links-->
-<!--slide:the-end--><p-slide>
-  <h1 class="center">That's all, folks!<br />👋</h1>
+<!--slide:the-end--><p-slide class="justify-start" style="--slide-bg: #130911">
+  <h1 class="flex column align-end from-right marker" style="margin-top: -0.3em; color: var(--slide-bg); line-height: 1">
+    <span>That's all,</span>
+    <span>folks&hellip;</span>
+  </h1>
+  <img src="img/thats-all.webp" alt="AI generated picture of a silhouette of a person in front of a sunset" class="full-media" />
 </p-slide>
-<p-slide>
+<p-slide class="gradient-4">
   <h3 class="center final-link">
     <a href="https://maxart2501.github.io/css-classless-style-talk/css-day/"> maxart2501.github.io/css-classless-style-talk/css-day/ </a>
     <img src="img/qr-slides.svg" alt="QR Code for the presentation's link" />
   </h3>
 </p-slide>
-<p-slide>
+<p-slide class="gradient-4">
   <pre class="self-center big"><code class="language-scss">@use 'conf.scss';
 @each $question of conf.$questions {
   answer: $question;
