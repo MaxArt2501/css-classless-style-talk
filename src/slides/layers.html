@@ -43,7 +43,7 @@
     <p-notes>Truth to be told, I've never considered that a "good" rule. A decent compromise, at best. But at the price of losing the power of the cascade.</p-notes>
   </p-fragment>
 </p-slide>
-<p-slide style="--slide-bg: url(../img/layers.jpg) 50% / cover">
+<p-slide style="--slide-bg: #0e0321; background: url(../img/layers.jpg) 50% / cover">
   <p-fragment
     ><h1
       class="center marker uppercase outline clip-left"
@@ -345,8 +345,52 @@ p {
   <p-notes>Or any other CSS library. Or maybe even legacy stylesheets!</p-notes>
   <p-notes>Watch out for `import` though</p-notes>
 </p-slide>
-<p-slide>
-  <h1>revert-layer</h1>
+<p-slide class="title-slide">
+  <h1>One more thing&hellip;</h1>
+</p-slide>
+<p-slide class="raw-code-slide">
+  <h2 class="center">revert-layer</h2>
+  <div class="stack self-center">
+    <p-fragment>
+      <pre class="display"><code class="language-css big">
+
+* {
+  all: revert;
+}
+
+
+</code></pre>
+    </p-fragment>
+    <p-fragment>
+      <pre class="display"><code class="language-css big">
+
+* {
+  all: revert-layer;
+}
+
+
+</code></pre>
+    </p-fragment>
+    <p-fragment>
+      <pre class="display"><code class="language-html big">&lt;section>
+  &lt;style>@scope {
+    :scope, * {
+      all: revert-layer;
+    }
+  }&lt;/style>
+&lt;/section></code></pre>
+    </p-fragment>
+  </div>
+  <p-fragment>
+    <img
+      src="img/marker-circle.svg#svgView(preserveAspectRatio(none))"
+      alt="A marker circle around the 'revert-layer' property value"
+      class="from-above"
+      style="top: 50%; width: 5em; left: 46%; height: 1.5em;"
+    />
+  </p-fragment>
+  <p-notes>You may have noticed that all: unset sucks, because removes also many desirable and meaningful styles. revert-layer to the rescue!</p-notes>
+  <p-notes>Also allows us to shield our scoped styles from authored styles from outside. It's effectively shadow-DOM-level encapsulation!</p-notes>
 </p-slide>
 <p-slide class="chrome"><span>99</span></p-slide>
 <p-slide class="firefox"><span>97</span></p-slide>

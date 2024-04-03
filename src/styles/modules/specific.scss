@@ -64,51 +64,6 @@ pre[class*='language-'] {
   color: #99f;
 }
 
-.sunset-slide {
-  --slide-bg: linear-gradient(to bottom, color-mix(in lab, black 70%, var(--brand-color)), transparent 55%) var(--brand-color);
-  perspective: 10em;
-
-  h2 {
-    text-align: center;
-    color: #f9c;
-    font-weight: normal;
-    text-transform: uppercase;
-    text-shadow: 0 0 0.1em;
-  }
-}
-
-.sun {
-  margin: auto;
-  width: 5em;
-  aspect-ratio: 1;
-  border-radius: 100vmax;
-  box-shadow: 0 0 10vh color-mix(in lab, #f8ef0e 40%, #822a7c);
-  background-color: color-mix(in lab, #f8ef0e60 40%, #822a7c60);
-
-  &::before {
-    content: '';
-    display: block;
-    width: 100%;
-    height: 100%;
-    border-radius: inherit;
-    mask-image: linear-gradient(to top, white 50%, #fff0 0), linear-gradient(to bottom, white 50%, #fff0 0);
-    mask-position: 0 0;
-    mask-size: 100% 10.5%, 100% 10%;
-    background: linear-gradient(to bottom, #f8ef0e, #db4542, #db4542);
-  }
-}
-
-.surface {
-  --grid-size: 0.5em;
-  background: linear-gradient(to right, cyan 0.025em, #0000 0) 0 0 / var(--grid-size) 100%,
-    linear-gradient(to bottom, cyan 0.025em, #0000 0) 0 0/100% var(--grid-size) #1a0b30;
-  height: 12em;
-  margin: -6em -50% -3em;
-  width: 200%;
-  transform: rotateX(90deg);
-  filter: blur(0.1vh);
-}
-
 .code-slide {
   --slide-bg: radial-gradient(circle, #ff3763 25%, #002e40 80%);
   background: url(../img/code-bg.jpg) center/100%;
@@ -379,6 +334,11 @@ p-deck:not([mode='speaker']) {
     line-height: 0.7;
     color: #241f21;
     letter-spacing: -0.08em;
+    > img {
+      width: 1em;
+      transform: scaleX(-1);
+      filter: contrast(0.75);
+    }
   }
   &[aria-hidden='false'] > span {
     animation: from-top 500ms 1 forwards;
