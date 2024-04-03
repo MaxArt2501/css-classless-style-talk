@@ -461,14 +461,12 @@ export default function Card() {
     <p-fragment>
       <div class="from-right">
         <p style="font-weight: bold; color: rebeccapurple; margin: 1.33em 1em">I am purple!</p>
-        <section>
+        <section class="scope-paragraph-example">
           <style>
-            @scope {
-              :scope {
-                outline: 0.1em solid navy;
-                padding: 1lh 1em;
-              }
-              p {
+            .scope-paragraph-example {
+              outline: 0.1em solid navy;
+              padding: 1lh 1em;
+              & p {
                 color: navy;
                 font-weight: bold;
                 margin: 0;
@@ -499,15 +497,14 @@ export default function Card() {
     }
   &lt;/style>
 &lt;/section></code></pre>
-    <section class="self-center">
+    <section class="self-center scope-outline-example">
       <style>
-        @scope {
-          :scope {
-            color: navy;
-            outline: 0.1em solid;
-            padding: 1lh 1em;
-          }
-          p {
+        .scope-outline-example {
+          color: navy;
+          outline: 0.1em solid;
+          padding: 1lh 1em;
+
+          & p {
             font-weight: bold;
             margin: 0;
           }
@@ -541,16 +538,15 @@ export default function Card() {
   &lt;/style>
 &lt;/section></code></pre>
     <p-fragment index="1" class="self-center">
-      <section class="invert from-right">
+      <section class="scope-invert-example from-right">
         <style>
-          @scope (.invert) {
-            :scope {
-              background: navy;
-              color: white;
-              outline: 0.1em solid;
-              padding: 1lh 1em;
-            }
-            p {
+          .scope-invert-example {
+            background: navy;
+            color: white;
+            outline: 0.1em solid;
+            padding: 1lh 1em;
+
+            & p {
               font-weight: bold;
               margin: 0;
             }
@@ -656,7 +652,7 @@ export default function Card() {
     />
   </p-fragment>
 </p-slide>
-<p-slide>
+<!-- <p-slide>
   <h1 class="center marker">&hellip; did you know?</h1>
   <p-fragment class="self-center">
     <pre class="from-bottom language-js big"><code>const paragraphChildren =
@@ -670,7 +666,7 @@ export default function Card() {
       style="top: 62%; width: 5em; left: 58%; height: 2em"
     />
   </p-fragment>
-</p-slide>
+</p-slide> -->
 <p-slide class="chrome"><span>118</span></p-slide>
 <p-slide class="firefox"><span><img src="img/dino.svg"></span></p-slide>
 <p-slide class="safari"><span>17.4</span></p-slide><!--/slide:encapsulation-->
@@ -719,7 +715,7 @@ export default function Card() {
     <p-notes>Truth to be told, I've never considered that a "good" rule. A decent compromise, at best. But at the price of losing the power of the cascade.</p-notes>
   </p-fragment>
 </p-slide>
-<p-slide style="--slide-bg: #0e0321; background: url(../img/layers.jpg) 50% / cover">
+<p-slide style="--slide-bg: #0e0321; background: url(img/layers.jpg) 50% / cover">
   <p-fragment
     ><h1
       class="center marker uppercase outline clip-left"
@@ -734,17 +730,6 @@ export default function Card() {
       Layers
     </h1></p-fragment
   >
-</p-slide>
-<p-slide class="code-slide">
-  <pre class="self-center"><code class="language-css">@layer scaffold,
-       utilities,
-       component;
-</code><p-fragment><code class="language-css">
-@layer scaffold {
-  * { box-sizing: border-box; }
-  * + * { margin-top: 0; }
-  ...
-}</code></p-fragment></pre>
 </p-slide>
 <p-slide class="gradient-2">
   <div class="two-columns">
@@ -788,20 +773,20 @@ export default function Card() {
 <p-slide class="gradient-3 center" style="line-height: 1;">
   <p-notes>We're already familiar with the concept of layers</p-notes>
   <p-fragment index="4">
-    <div><strong>!important</strong> User Agent styles<br>&#128899;</div>
+    <div><strong>!important</strong> User Agent styles<br><span class="chevron-down"></span></div>
   </p-fragment>
   <p-fragment index="3">
-    <div><strong>!important</strong> User styles<br>&#128899;</div>
+    <div><strong>!important</strong> User styles<br><span class="chevron-down"></span></div>
   </p-fragment>
   <p-fragment index="2">
-    <div><strong>!important</strong> Author styles<br>&#128899;</div>
+    <div><strong>!important</strong> Author styles<br><span class="chevron-down"></span></div>
   </p-fragment>
   <div>Author styles</div>
   <p-fragment index="0">
-    <div>&#128899;<br>User styles</div>
+    <div><span class="chevron-down"></span><br>User styles</div>
   </p-fragment>
   <p-fragment index="1">
-    <div>&#128899;<br>User Agent styles</div>
+    <div><span class="chevron-down"></span><br>User Agent styles</div>
   </p-fragment>
   <p-fragment index="5">
     <img
@@ -813,6 +798,17 @@ export default function Card() {
     <p-notes>Our job is on the middle two.</p-notes>
     <p-notes>All out stylesheets clash here, so we'd like some order. That's where @layer come into play</p-notes>
   </p-fragment>
+</p-slide>
+<p-slide class="code-slide">
+  <pre class="self-center"><code class="language-css">@layer scaffold,
+       utilities,
+       component;
+</code><p-fragment><code class="language-css">
+@layer scaffold {
+  * { box-sizing: border-box; }
+  * + * { margin-top: 0; }
+  ...
+}</code></p-fragment></pre>
 </p-slide>
 <p-slide class="gradient-3" style="line-height: 1;">
   <div class="items-center content-center" grid="2" style="gap: .5em;">
@@ -830,11 +826,12 @@ export default function Card() {
           <p-fragment index="9"><strong>!utilities</strong></p-fragment><br>
           <p-fragment index="10"><strong>!component</strong></p-fragment><br>
           <p-fragment index="11"><strong>!<em>no name</em></strong></p-fragment><br>
-          <p-fragment index="11"><strong>!<em>no layer</em></strong></p-fragment>
+          <p-fragment index="12"><strong>!<em>no layer</em></strong></p-fragment>
         </div>
       </div>
     </p-fragment>
-    <div style="margin-inline-start: 6em;">&#128899;</div>
+    <span class="chevron-down" style="margin-inline-start: 6em;"></span>
+    <p-fragment index="13"><span class="chevron-down" style="margin-inline-start: 2em;"></span></p-fragment>
     <div class="col-1" style="justify-self: end;">Author styles</div>
     <p-fragment index="0">
       <div class="flex align-center" style="gap: .5em;">
@@ -896,7 +893,7 @@ export default function Card() {
     <p-fragment index="1" class="center self-center" style="color: red; font-size: 200%; font-weight: bold;">Hello, layers!</p-fragment>
   </div>
 </p-slide>
-<p-slide class="raw-code-slide">
+<!-- <p-slide class="raw-code-slide">
   <p-fragment index="0">
     <img
       src="img/marker-circle.svg#svgView(preserveAspectRatio(none))"
@@ -928,7 +925,7 @@ export default function Card() {
   </p-fragment>
   <div class="two-columns">
     <pre class="big"><code class="language-html">&lt;p>Hello, layers!&lt;/p></code>
-<code class="language-css">@layer bob;
+<code class="language-css">
 @layer {
   p { color: green; }
 }
@@ -937,7 +934,7 @@ p {
 }</code></pre>
     <p-fragment index="1" class="center self-center" style="color: #f60; font-size: 200%; font-weight: bold;">Hello, layers!</p-fragment>
   </div>
-</p-slide>
+</p-slide> -->
 <p-slide class="raw-code-slide">
   <p-fragment index="0">
     <img
@@ -974,7 +971,7 @@ p {
   <h1 class="center marker no-margins" style="color: color-mix(in srgb, var(--brand-color), white);">ITCSS</h1>
   <div class="two-columns content-center">
     <p-fragment>
-      <img src="img/triangle.webp" alt="Picture of an inverted triangle" class="from-left" style="height: 8em;">
+      <img src="img/triangle.webp" alt="An inverted triangle" class="from-left" style="height: 8em;">
     </p-fragment>
     <p-fragment class="marker" style="line-height: 1; color: color-mix(in srgb, var(--brand-color), white); width: max-content;">
       <div class="from-right" style="margin: 1em 0 0 -1em;">
@@ -988,6 +985,7 @@ p {
       </div>
     </p-fragment>
   </div>
+  <p-notes>It's an old methodology based on "layers" to organize CSS classes. But we can do better...</p-notes>
 </p-slide>
 <p-slide class="code-slide stack">
   <pre class="self-center"><code class="language-css">import "bootstrap.css"</code>
@@ -1096,9 +1094,9 @@ p {
 .question:focus-within {
   outline: 3px solid crimson;
 }</code></pre>
-    <p-fragment>
+    <p-fragment class="focus-within-example">
       <style>
-        @scope {
+        .focus-within-example {
           .question {
             color: #222;
             outline: 0.1em solid;
@@ -1177,7 +1175,7 @@ ul:has(:nth-child(n + 3)) {
   overflow: hidden;
 }</code></pre></p-fragment>
 </p-slide>
-<p-slide class="gradient-3 stack">
+<!-- <p-slide class="gradient-3 stack">
   <pre class="self-center big"><code class="language-css">h2.with-hero-pic {
   border-block-end: none;
   margin-block-end: 0.5rem;
@@ -1208,7 +1206,7 @@ ul:has(:nth-child(n + 3)) {
     <pre class="big"><code class="language-css">.question:has(:focus-visible) {
   outline: 3px solid crimson;
 }</code></pre>
-</p-slide>
+</p-slide> -->
 <p-slide class="chrome"><span>108</span></p-slide>
 <p-slide class="firefox"><span>121</span></p-slide>
 <p-slide class="safari"><span>15.4</span></p-slide>
@@ -1244,7 +1242,7 @@ footer button {
   <p-notes>There shoudn't be much difference, but nesting is so nice! And they worked on the spec so well we almost feels at home coming from SASS</p-notes>
   <p-notes>It's an expressive way to define a contextual style</p-notes>
 </p-slide>
-<p-slide class="gradient-1">
+<!-- <p-slide class="gradient-1">
   <div class="two-columns">
     <pre class="display"><code class="language-css big">
 article {
@@ -1295,17 +1293,17 @@ article :is(ul, ol) {
 }</code></pre>
   </p-fragment>
   <p-fragment class="big-x" style="top: 40%; left: 55%; width: 8em;"></p-fragment>
-</p-slide>
+</p-slide> -->
 <p-slide class="gradient-4">
   <pre class="self-center big"><code class="language-css">& {
   font-family: system-ui, sans-serif;
-}
-
+}</code>
+<p-fragment><code class="language-css">
 @scope (my-card) {
   & & {
     padding: 0.5rem;
   }
-}</code></pre>
+}</code></p-fragment></pre>
 </p-slide>
 <p-slide class="chrome"><span>120</span></p-slide>
 <p-slide class="firefox"><span>117</span></p-slide>
@@ -1334,7 +1332,7 @@ article :is(ul, ol) {
 <p-slide class="chrome"><span>111</span></p-slide>
 <p-slide class="firefox"><span>113</span></p-slide>
 <p-slide class="safari"><span>16.2</span></p-slide>
-<p-slide>
+<!-- <p-slide>
   <h1 class="our-header from-left" style="font-size: 300%">Relative colors</h1>
 </p-slide>
 <p-slide class="chrome">
@@ -1349,7 +1347,7 @@ article :is(ul, ol) {
 </p-slide>
 <p-slide class="chrome"><span>119</span></p-slide>
 <p-slide class="firefox"><span><img src="img/dino.svg"></span></p-slide>
-<p-slide class="safari"><span>16.4</span></p-slide>
+<p-slide class="safari"><span>16.4</span></p-slide> -->
 <p-slide>
   <p-fragment>
     <img
@@ -1365,8 +1363,9 @@ article :is(ul, ol) {
 </p-slide>
 <p-slide class="raw-code-slide">
   <pre class="display ratio self-center flex column justify-center"><code class="language-css big">@container style(--theme: dark) {
-    p { ... }
-  }
+  p { ... }
+}
+
 </code>
 <p-fragment><code class="language-css big">@container style(--theme: rainbows) {
   header { ... }
@@ -1375,7 +1374,7 @@ article :is(ul, ol) {
   <p-notes>With CSQ, we define a possible <em>variant</em> of our styles - and not just a single value - with the name and meaning we want.</p-notes>
   <p-notes>We could use a class, but classes are not inherited.</p-notes>
 </p-slide>
-<p-slide class="raw-code-slide">
+<!-- <p-slide class="raw-code-slide">
   <pre class="display ratio self-center flex column justify-center"><code class="language-css big">@container style(--content: minimal) {
   picture { display: none; }
 }
@@ -1383,7 +1382,7 @@ article :is(ul, ol) {
 @container style(--content: verbose) {
   footer { display: block; }
 }</code></pre>
-</p-slide>
+</p-slide> -->
 <p-slide class="raw-code-slide">
   <pre class="display ratio self-center flex column justify-center"><code class="language-css big">@container style(--spacing: loose) {
   main { padding: 2rem; }
@@ -1392,6 +1391,7 @@ article :is(ul, ol) {
 @container style(--spacing: compact) {
   main { padding: 0.5rem; }
 }</code></pre>
+  <p-notes>We can respond to user preferences beyond what Media Queries can offer</p-notes>
 </p-slide>
 <p-slide class="raw-code-slide">
   <pre class="display self-center flex column justify-center"><code class="language-css big">@container style(--orientation: vertical) {
@@ -1404,6 +1404,7 @@ article :is(ul, ol) {
     flex-direction: row;
   }
 }</code></pre>
+  <p-notes>And even introduce layout logic!</p-notes>
 </p-slide>
 <p-slide class="chrome"><span>111</span></p-slide>
 <p-slide class="firefox"><span><img src="img/dino.svg"></span></p-slide>
