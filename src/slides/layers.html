@@ -43,7 +43,7 @@
     <p-notes>Truth to be told, I've never considered that a "good" rule. A decent compromise, at best. But at the price of losing the power of the cascade.</p-notes>
   </p-fragment>
 </p-slide>
-<p-slide style="--slide-bg: #0e0321; background: url(../img/layers.jpg) 50% / cover">
+<p-slide style="--slide-bg: #0e0321; background: url(img/layers.jpg) 50% / cover">
   <p-fragment
     ><h1
       class="center marker uppercase outline clip-left"
@@ -58,17 +58,6 @@
       Layers
     </h1></p-fragment
   >
-</p-slide>
-<p-slide class="code-slide">
-  <pre class="self-center"><code class="language-css">@layer scaffold,
-       utilities,
-       component;
-</code><p-fragment><code class="language-css">
-@layer scaffold {
-  * { box-sizing: border-box; }
-  * + * { margin-top: 0; }
-  ...
-}</code></p-fragment></pre>
 </p-slide>
 <p-slide class="gradient-2">
   <div class="two-columns">
@@ -112,20 +101,20 @@
 <p-slide class="gradient-3 center" style="line-height: 1;">
   <p-notes>We're already familiar with the concept of layers</p-notes>
   <p-fragment index="4">
-    <div><strong>!important</strong> User Agent styles<br>&#128899;</div>
+    <div><strong>!important</strong> User Agent styles<br><span class="chevron-down"></span></div>
   </p-fragment>
   <p-fragment index="3">
-    <div><strong>!important</strong> User styles<br>&#128899;</div>
+    <div><strong>!important</strong> User styles<br><span class="chevron-down"></span></div>
   </p-fragment>
   <p-fragment index="2">
-    <div><strong>!important</strong> Author styles<br>&#128899;</div>
+    <div><strong>!important</strong> Author styles<br><span class="chevron-down"></span></div>
   </p-fragment>
   <div>Author styles</div>
   <p-fragment index="0">
-    <div>&#128899;<br>User styles</div>
+    <div><span class="chevron-down"></span><br>User styles</div>
   </p-fragment>
   <p-fragment index="1">
-    <div>&#128899;<br>User Agent styles</div>
+    <div><span class="chevron-down"></span><br>User Agent styles</div>
   </p-fragment>
   <p-fragment index="5">
     <img
@@ -137,6 +126,17 @@
     <p-notes>Our job is on the middle two.</p-notes>
     <p-notes>All out stylesheets clash here, so we'd like some order. That's where @layer come into play</p-notes>
   </p-fragment>
+</p-slide>
+<p-slide class="code-slide">
+  <pre class="self-center"><code class="language-css">@layer scaffold,
+       utilities,
+       component;
+</code><p-fragment><code class="language-css">
+@layer scaffold {
+  * { box-sizing: border-box; }
+  * + * { margin-top: 0; }
+  ...
+}</code></p-fragment></pre>
 </p-slide>
 <p-slide class="gradient-3" style="line-height: 1;">
   <div class="items-center content-center" grid="2" style="gap: .5em;">
@@ -154,11 +154,12 @@
           <p-fragment index="9"><strong>!utilities</strong></p-fragment><br>
           <p-fragment index="10"><strong>!component</strong></p-fragment><br>
           <p-fragment index="11"><strong>!<em>no name</em></strong></p-fragment><br>
-          <p-fragment index="11"><strong>!<em>no layer</em></strong></p-fragment>
+          <p-fragment index="12"><strong>!<em>no layer</em></strong></p-fragment>
         </div>
       </div>
     </p-fragment>
-    <div style="margin-inline-start: 6em;">&#128899;</div>
+    <span class="chevron-down" style="margin-inline-start: 6em;"></span>
+    <p-fragment index="13"><span class="chevron-down" style="margin-inline-start: 2em;"></span></p-fragment>
     <div class="col-1" style="justify-self: end;">Author styles</div>
     <p-fragment index="0">
       <div class="flex align-center" style="gap: .5em;">
@@ -220,7 +221,7 @@
     <p-fragment index="1" class="center self-center" style="color: red; font-size: 200%; font-weight: bold;">Hello, layers!</p-fragment>
   </div>
 </p-slide>
-<p-slide class="raw-code-slide">
+<!-- <p-slide class="raw-code-slide">
   <p-fragment index="0">
     <img
       src="img/marker-circle.svg#svgView(preserveAspectRatio(none))"
@@ -252,7 +253,7 @@
   </p-fragment>
   <div class="two-columns">
     <pre class="big"><code class="language-html">&lt;p>Hello, layers!&lt;/p></code>
-<code class="language-css">@layer bob;
+<code class="language-css">
 @layer {
   p { color: green; }
 }
@@ -261,7 +262,7 @@ p {
 }</code></pre>
     <p-fragment index="1" class="center self-center" style="color: #f60; font-size: 200%; font-weight: bold;">Hello, layers!</p-fragment>
   </div>
-</p-slide>
+</p-slide> -->
 <p-slide class="raw-code-slide">
   <p-fragment index="0">
     <img
@@ -298,7 +299,7 @@ p {
   <h1 class="center marker no-margins" style="color: color-mix(in srgb, var(--brand-color), white);">ITCSS</h1>
   <div class="two-columns content-center">
     <p-fragment>
-      <img src="img/triangle.webp" alt="Picture of an inverted triangle" class="from-left" style="height: 8em;">
+      <img src="img/triangle.webp" alt="An inverted triangle" class="from-left" style="height: 8em;">
     </p-fragment>
     <p-fragment class="marker" style="line-height: 1; color: color-mix(in srgb, var(--brand-color), white); width: max-content;">
       <div class="from-right" style="margin: 1em 0 0 -1em;">
@@ -312,6 +313,7 @@ p {
       </div>
     </p-fragment>
   </div>
+  <p-notes>It's an old methodology based on "layers" to organize CSS classes. But we can do better...</p-notes>
 </p-slide>
 <p-slide class="code-slide stack">
   <pre class="self-center"><code class="language-css">import "bootstrap.css"</code>

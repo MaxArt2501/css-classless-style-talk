@@ -1,4 +1,9 @@
 @font-face {
+  font-family: 'Consolas';
+  font-display: swap;
+  src: local('Consolas'), url(../fonts/consolas.ttf) format('truetype');
+}
+@font-face {
   font-family: 'Neon 80s';
   font-display: swap;
   src: url(../fonts/neon-80s.ttf) format('truetype');
@@ -284,6 +289,16 @@ p-deck:not([mode='speaker']) {
   width: 1em;
   height: 1em;
   border-bottom: 0.125em solid;
+}
+
+.chevron-down {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  border: .1em solid;
+  border-top-color: transparent;
+  border-left-color: transparent;
+  transform: scaleX(1.5) translateY(-25%) rotate(45deg);
 }
 
 .chrome {

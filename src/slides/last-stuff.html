@@ -22,7 +22,7 @@
 <p-slide class="chrome"><span>111</span></p-slide>
 <p-slide class="firefox"><span>113</span></p-slide>
 <p-slide class="safari"><span>16.2</span></p-slide>
-<p-slide>
+<!-- <p-slide>
   <h1 class="our-header from-left" style="font-size: 300%">Relative colors</h1>
 </p-slide>
 <p-slide class="chrome">
@@ -37,7 +37,7 @@
 </p-slide>
 <p-slide class="chrome"><span>119</span></p-slide>
 <p-slide class="firefox"><span><img src="img/dino.svg"></span></p-slide>
-<p-slide class="safari"><span>16.4</span></p-slide>
+<p-slide class="safari"><span>16.4</span></p-slide> -->
 <p-slide>
   <p-fragment>
     <img
@@ -53,8 +53,9 @@
 </p-slide>
 <p-slide class="raw-code-slide">
   <pre class="display ratio self-center flex column justify-center"><code class="language-css big">@container style(--theme: dark) {
-    p { ... }
-  }
+  p { ... }
+}
+
 </code>
 <p-fragment><code class="language-css big">@container style(--theme: rainbows) {
   header { ... }
@@ -63,7 +64,7 @@
   <p-notes>With CSQ, we define a possible <em>variant</em> of our styles - and not just a single value - with the name and meaning we want.</p-notes>
   <p-notes>We could use a class, but classes are not inherited.</p-notes>
 </p-slide>
-<p-slide class="raw-code-slide">
+<!-- <p-slide class="raw-code-slide">
   <pre class="display ratio self-center flex column justify-center"><code class="language-css big">@container style(--content: minimal) {
   picture { display: none; }
 }
@@ -71,7 +72,7 @@
 @container style(--content: verbose) {
   footer { display: block; }
 }</code></pre>
-</p-slide>
+</p-slide> -->
 <p-slide class="raw-code-slide">
   <pre class="display ratio self-center flex column justify-center"><code class="language-css big">@container style(--spacing: loose) {
   main { padding: 2rem; }
@@ -80,6 +81,7 @@
 @container style(--spacing: compact) {
   main { padding: 0.5rem; }
 }</code></pre>
+  <p-notes>We can respond to user preferences beyond what Media Queries can offer</p-notes>
 </p-slide>
 <p-slide class="raw-code-slide">
   <pre class="display self-center flex column justify-center"><code class="language-css big">@container style(--orientation: vertical) {
@@ -92,6 +94,7 @@
     flex-direction: row;
   }
 }</code></pre>
+  <p-notes>And even introduce layout logic!</p-notes>
 </p-slide>
 <p-slide class="chrome"><span>111</span></p-slide>
 <p-slide class="firefox"><span><img src="img/dino.svg"></span></p-slide>

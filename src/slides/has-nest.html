@@ -23,9 +23,9 @@
 .question:focus-within {
   outline: 3px solid crimson;
 }</code></pre>
-    <p-fragment>
+    <p-fragment class="focus-within-example">
       <style>
-        @scope {
+        .focus-within-example {
           .question {
             color: #222;
             outline: 0.1em solid;
@@ -104,7 +104,7 @@ ul:has(:nth-child(n + 3)) {
   overflow: hidden;
 }</code></pre></p-fragment>
 </p-slide>
-<p-slide class="gradient-3 stack">
+<!-- <p-slide class="gradient-3 stack">
   <pre class="self-center big"><code class="language-css">h2.with-hero-pic {
   border-block-end: none;
   margin-block-end: 0.5rem;
@@ -135,7 +135,7 @@ ul:has(:nth-child(n + 3)) {
     <pre class="big"><code class="language-css">.question:has(:focus-visible) {
   outline: 3px solid crimson;
 }</code></pre>
-</p-slide>
+</p-slide> -->
 <p-slide class="chrome"><span>108</span></p-slide>
 <p-slide class="firefox"><span>121</span></p-slide>
 <p-slide class="safari"><span>15.4</span></p-slide>
@@ -171,7 +171,7 @@ footer button {
   <p-notes>There shoudn't be much difference, but nesting is so nice! And they worked on the spec so well we almost feels at home coming from SASS</p-notes>
   <p-notes>It's an expressive way to define a contextual style</p-notes>
 </p-slide>
-<p-slide class="gradient-1">
+<!-- <p-slide class="gradient-1">
   <div class="two-columns">
     <pre class="display"><code class="language-css big">
 article {
@@ -222,17 +222,17 @@ article :is(ul, ol) {
 }</code></pre>
   </p-fragment>
   <p-fragment class="big-x" style="top: 40%; left: 55%; width: 8em;"></p-fragment>
-</p-slide>
+</p-slide> -->
 <p-slide class="gradient-4">
   <pre class="self-center big"><code class="language-css">& {
   font-family: system-ui, sans-serif;
-}
-
+}</code>
+<p-fragment><code class="language-css">
 @scope (my-card) {
   & & {
     padding: 0.5rem;
   }
-}</code></pre>
+}</code></p-fragment></pre>
 </p-slide>
 <p-slide class="chrome"><span>120</span></p-slide>
 <p-slide class="firefox"><span>117</span></p-slide>

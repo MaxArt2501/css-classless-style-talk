@@ -326,14 +326,12 @@ export default function Card() {
     <p-fragment>
       <div class="from-right">
         <p style="font-weight: bold; color: rebeccapurple; margin: 1.33em 1em">I am purple!</p>
-        <section>
+        <section class="scope-paragraph-example">
           <style>
-            @scope {
-              :scope {
-                outline: 0.1em solid navy;
-                padding: 1lh 1em;
-              }
-              p {
+            .scope-paragraph-example {
+              outline: 0.1em solid navy;
+              padding: 1lh 1em;
+              & p {
                 color: navy;
                 font-weight: bold;
                 margin: 0;
@@ -364,15 +362,14 @@ export default function Card() {
     }
   &lt;/style>
 &lt;/section></code></pre>
-    <section class="self-center">
+    <section class="self-center scope-outline-example">
       <style>
-        @scope {
-          :scope {
-            color: navy;
-            outline: 0.1em solid;
-            padding: 1lh 1em;
-          }
-          p {
+        .scope-outline-example {
+          color: navy;
+          outline: 0.1em solid;
+          padding: 1lh 1em;
+
+          & p {
             font-weight: bold;
             margin: 0;
           }
@@ -406,16 +403,15 @@ export default function Card() {
   &lt;/style>
 &lt;/section></code></pre>
     <p-fragment index="1" class="self-center">
-      <section class="invert from-right">
+      <section class="scope-invert-example from-right">
         <style>
-          @scope (.invert) {
-            :scope {
-              background: navy;
-              color: white;
-              outline: 0.1em solid;
-              padding: 1lh 1em;
-            }
-            p {
+          .scope-invert-example {
+            background: navy;
+            color: white;
+            outline: 0.1em solid;
+            padding: 1lh 1em;
+
+            & p {
               font-weight: bold;
               margin: 0;
             }
@@ -521,7 +517,7 @@ export default function Card() {
     />
   </p-fragment>
 </p-slide>
-<p-slide>
+<!-- <p-slide>
   <h1 class="center marker">&hellip; did you know?</h1>
   <p-fragment class="self-center">
     <pre class="from-bottom language-js big"><code>const paragraphChildren =
@@ -535,7 +531,7 @@ export default function Card() {
       style="top: 62%; width: 5em; left: 58%; height: 2em"
     />
   </p-fragment>
-</p-slide>
+</p-slide> -->
 <p-slide class="chrome"><span>118</span></p-slide>
 <p-slide class="firefox"><span><img src="img/dino.svg"></span></p-slide>
 <p-slide class="safari"><span>17.4</span></p-slide>
