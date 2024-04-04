@@ -1085,7 +1085,7 @@ p {
     <p-fragment>
       <pre class="display"><code class="language-html big">&lt;section>
   &lt;style>@scope {
-    :scope, * {
+    :scope * {
       all: revert-layer;
     }
   }&lt;/style>
@@ -1102,6 +1102,7 @@ p {
   </p-fragment>
   <p-notes>You may have noticed that all: unset sucks, because removes also many desirable and meaningful styles. revert-layer to the rescue!</p-notes>
   <p-notes>Also allows us to shield our scoped styles from authored styles from outside. It's effectively shadow-DOM-level encapsulation!</p-notes>
+  <p-notes>MDN and caniuse lie, revert-layer is actually well supported</p-notes>
 </p-slide>
 <p-slide class="chrome"><span>99</span></p-slide>
 <p-slide class="firefox"><span>97</span></p-slide>
@@ -1345,7 +1346,7 @@ article :is(ul, ol) {
 <p-slide class="chrome"><span>120</span></p-slide>
 <p-slide class="firefox"><span>117</span></p-slide>
 <p-slide class="safari"><span>17.2</span></p-slide><!--/slide:has-nest-->
-<!--slide:last-stuff--><p-slide class="title-slide">
+<!--slide:last-stuff--><!-- <p-slide class="title-slide">
   <h1 class="center">What about&hellip; colors?</h1>
 </p-slide>
 <p-slide>
@@ -1368,7 +1369,7 @@ article :is(ul, ol) {
 </p-slide>
 <p-slide class="chrome"><span>111</span></p-slide>
 <p-slide class="firefox"><span>113</span></p-slide>
-<p-slide class="safari"><span>16.2</span></p-slide>
+<p-slide class="safari"><span>16.2</span></p-slide> -->
 <!-- <p-slide>
   <h1 class="our-header from-left" style="font-size: 300%">Relative colors</h1>
 </p-slide>
@@ -1494,8 +1495,10 @@ article :is(ul, ol) {
       <a href="https://ishadeed.com/article/css-nesting/">ishadeed.com/article/css-nesting/</a>
     </li>
     <li>
-      🔗 Dynamic Color Manipulation with CSS Relative Colors
-      <a href="https://blog.jim-nielsen.com/2021/css-relative-colors/">blog.jim-nielsen.com/2021/css-relative-colors/</a>
+      🔗 Getting Started with Style Queries (Una Kravets)
+      <a href="https://developer.chrome.com/en/blog/style-queries/">
+        developer.chrome.com/en/blog/style-queries/
+      </a>
     </li>
   </ul>
 </p-slide><!--/slide:links-->
