@@ -56,24 +56,24 @@
 </code></pre>
 </p-slide>
 <p-slide class="gradient-1">
-  <pre class="display top-left self-start language-html"><code>&lt;ul>
-  &lt;li>Item A1&lt;/li> ...
-&lt;/ul>
-&lt;ul class="no-top-margin">...&lt;/ul>
-&lt;ul class="no-top-margin">...&lt;/ul></code></pre>
-  <p-fragment class="big-x" style="top: 14%; left: 9%; width: 8em"></p-fragment>
+  <pre class="display top-left self-start language-html"><code>&lt;article>
+  &lt;p>Lorem ipsum&hellip;&lt;/p> ...
+&lt;/article>
+&lt;article class="top-margin">...&lt;/article>
+&lt;article class="top-margin">...&lt;/article></code></pre>
+  <p-fragment class="big-x" style="top: 14%; left: 12%; width: 8em"></p-fragment>
   <div style="display: flex; margin: 0.5em; gap: 0.5em" class="self-end">
     <p-fragment class="self-end">
-      <pre class="display top-left self-start language-html"><code>&lt;ul>
-  &lt;li>Item A1&lt;/li> ...
-&lt;/ul>
-&lt;ul>...&lt;/ul>
-&lt;ul>...&lt;/ul></code></pre>
+      <pre class="display top-left self-start language-html"><code>&lt;article>
+  &lt;p>Lorem ipsum&hellip;&lt;/p> ...
+&lt;/article>
+&lt;article>...&lt;/article>
+&lt;article>...&lt;/article></code></pre>
     </p-fragment>
     <p-fragment class="self-start">
       <pre class="display top-right self-start language-css"><code>
-ul + ul {
-  margin-top: 0;
+article + article {
+  margin-top: 1rem;
 }
 &nbsp;</code></pre>
     </p-fragment>
@@ -93,7 +93,7 @@ ul + ul {
   &lt;button role="tab" aria-selected="true">Network&lt;/button>
   &lt;button role="tab">Users&lt;/button>
 &lt;/div></code></pre>
-    </p-fragment>
+</p-fragment>
     <p-fragment class="self-start">
       <pre class="display top-right self-start language-css"><code>[role=tablist] { ... }
 [role=tab] { ... }
@@ -102,6 +102,9 @@ ul + ul {
 }</code></pre>
     </p-fragment>
   </div>
+  <p-notes>We don't name anything, we're using standard attributes and values</p-notes>
+  <p-notes>Also add accessible and meaningful semantics. Win-win!</p-notes>
+  <p-notes>Maybe a little more verbose, but clear!</p-notes>
 </p-slide>
 <p-slide class="title-slide">
   <h3 class="marker">If there's a meaning</h3>
@@ -117,9 +120,21 @@ ul + ul {
     <p>But let's see how we can apply this pattern effectively.</p>
   </p-notes>
 </p-slide>
-<p-slide class="justify-start" style="--slide-bg: linear-gradient(#0d0140 50%, black 0)">
-  <h1 class="center outline marker" style="color: #39c5ff">Shadow DOM</h1>
-  <img src="img/street-shadow.webp" alt="" class="full-media" />
+<p-slide class="justify-start" style="--slide-bg: #000">
+  <h1
+    class="marker center from-top"
+    style="
+      color: cyan;
+      font-size: 3.5em;
+      -webkit-text-stroke-color: currentColor;
+      -webkit-text-fill-color: #000;
+      -webkit-text-stroke-width: 0.02em;
+      filter: drop-shadow(0 0 0.05em #0ff);
+    "
+  >
+    Shadow DOM
+  </h1>
+  <img src="img/tron.svg" alt="" class="from-bottom" style="position: absolute; height: 5em; left: 1em; top: 0.2em; filter: drop-shadow(0 0 0.08em cyan); font-size: 5em" />
   <p-notes>
     The problem is that Shadow DOM's encapsulation is very strong. Not everyone is comfortable with it, and IMO it's not always the best choice.
     Ok for a UI Kit where you need visual consistency, not so much for pages, forms and widgets.
@@ -387,6 +402,9 @@ export default function Card() {
       style="top: 38.4%; width: 2.2em; left: 11.6%; height: 1em"
     />
   </p-fragment>
+  <p-fragment class="overlay-banner">
+    <h1 class="marker center clip-left" style="color: white;">It gets better.</h1>
+  </p-fragment>
 </p-slide>
 <p-slide class="raw-code-slide">
   <div class="two-columns">
@@ -474,6 +492,7 @@ export default function Card() {
   <p-notes>Writing styles from a node down, without a limit on how deep it can reach, might not be ideal.</p-notes>
 </p-slide>
 <p-slide class="super-mario-code" style="flex-direction: row; align-items: flex-start">
+  <img src="img/goomba.svg" alt="A walking goomba">
   <pre class="language-jsx"><code>function MyCard({ title, children }) {
   return &lt;div class="my-card">
     &lt;header>
@@ -499,6 +518,12 @@ export default function Card() {
       class="from-above"
       style="top: 17%; width: 3.5em; left: 67%; height: 1em"
     />
+    <img
+      src="img/marker-circle.svg#svgView(preserveAspectRatio(none))"
+      alt="A marker circle around the .my-card class of the div"
+      class="from-above"
+      style="top: 22%; width: 3.5em; left: 32%; height: 1em"
+    />
   </p-fragment>
   <p-fragment>
     <img
@@ -507,6 +532,12 @@ export default function Card() {
       class="from-above"
       style="top: 22%; width: 4em; left: 61%; height: 1em"
     />
+    <img
+      src="img/marker-circle.svg#svgView(preserveAspectRatio(none))"
+      alt="A marker circle around the MyHeader component"
+      class="from-above"
+      style="top: 33%; width: 3.2em; left: 17%; height: 1em;"
+    />
   </p-fragment>
   <p-fragment>
     <img
@@ -514,6 +545,12 @@ export default function Card() {
       alt="A marker circle around the section selector"
       class="from-above"
       style="top: 22%; width: 3em; left: 75%; height: 1em"
+    />
+    <img
+      src="img/marker-circle.svg#svgView(preserveAspectRatio(none))"
+      alt="A marker circle around the {children} interpolation"
+      class="from-above"
+      style="top: 43%; width: 3.4em; left: 25%; height: 1em;"
     />
   </p-fragment>
 </p-slide>

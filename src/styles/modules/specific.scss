@@ -240,6 +240,7 @@ pre.display {
 .super-mario-code {
   --slide-bg: #5c94fc;
   --pixel-size: 0.075em;
+  --step-duration: 0.3s;
   background: url(../img/ground.svg) 0 100% / calc(var(--pixel-size) * 16) calc(var(--pixel-size) * 16) repeat-x;
 
   pre {
@@ -256,6 +257,24 @@ pre.display {
       display: block;
     }
   }
+
+  img {
+    width: calc(var(--pixel-size) * 16);
+    position: absolute;
+    bottom: calc(var(--pixel-size)* 16);
+    left: 0;
+    animation: goomba-steps var(--step-duration) infinite alternate steps(2, jump-none),
+      goomba-move 30s infinite alternate linear;
+  }
+}
+
+@keyframes goomba-steps {
+  from { scale: 1 1; }
+  to { scale: -1 1; }
+}
+@keyframes goomba-move {
+  from { left: 0; }
+  to { left: calc(100% - var(--pixel-size) * 16); }
 }
 
 @keyframes clip-left {
