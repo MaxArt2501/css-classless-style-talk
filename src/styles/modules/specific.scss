@@ -221,7 +221,7 @@ pre.display {
 }
 
 .c64-slide {
-  --slide-bg: var(--brand-color);
+  --slide-bg: var(--c64-slide-color, var(--brand-color));
   color: color-mix(in lab, var(--slide-bg), white);
   border: 1em solid;
 
