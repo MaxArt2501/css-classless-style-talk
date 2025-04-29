@@ -14,13 +14,15 @@
   </head>
 
   <body>
-    <p-deck> <!--slide:cover--><p-slide class="cover">
-  <img src="img/logo-gellify.svg" alt="GELLIFY Logo" class="full-media" />
-  <h1>Without class but with style</h1>
-  <figure>
-    <img src="img/css-day.svg" alt="CSS Day Logo" />
-    <figcaption>Faenza, <time datetime="2024-04-05">2024-04-05</time></figcaption>
-  </figure>
+    <p-deck style="--c64-slide-color: #3e32a2"> <!--slide:cover-mofs--><p-slide class="cover-mofs">
+  <picture class="full-media">
+    <source srcset="img/mofs-css.avif" type="image/avif" />
+    <source srcset="img/mofs-css.webp" type="image/webp" />
+    <img src="img/mofs-css.jpg" alt="" />
+  </picture>
+  <h1>Without class<br>&hellip; but with style!</h1>
+  <p>Modena, <time datetime="2025-04-30">2025-04-30</time></p>
+  <img src="img/mofs-logo.png" alt="Logo Modena Full Stack">
   <h4>
     Massimo Artizzu
     <small>Web Architect, <a href="https://gellify.com/" class="gellify">Gellify</a></small>
@@ -63,26 +65,21 @@
     <h4>
       <a href="https://github.com/MaxArt2501"><img src="img/github.svg" alt="GitHub logo" /></a> /
       <a href="https://mastodon.social/MaxArt2501"><img src="img/mastodon.svg" alt="Mastodon logo" /></a> /
-      <a href="https://twitter.com/MaxArt2501"><img src="img/twitter.svg" alt="Twitter logo" /></a> /
+      <a href="https://bsky.app/profile/MaxArt2501.bsky.social"><img src="img/bluesky.svg" alt="BlueSky logo" /></a> /
       <a href="https://dev.to/MaxArt2501"><img src="img/dev-to.svg" alt="dev.to logo" /></a>
       @MaxArt2501
     </h4>
   </div>
 </p-slide>
-<p-slide style="--slide-bg: #250a32">
-  <a href="https://gellify.bamboohr.com/careers" target="_blank" rel="noopener">
-    <img
-      src="img/join-us.jpg"
-      alt="Picture with title 'GELLIFY ITALIA Work with us: Scan the QRcode to join our Purple Team' followed by a QR Code pointing to https://gellify.bamboohr.com/careers"
-      class="full-media"
-    />
-  </a>
-</p-slide>
 <p-slide class="center">
   <h3>You can find these slides at</h3>
-  <img src="img/qr-slides.svg" alt="QR Code for the presentation's link" style="height: 7em; margin-bottom: 1em" />
-  <a href="https://maxart2501.github.io/css-classless-style-talk/css-day/">maxart2501.github.io/css-classless-style-talk/css-day/</a>
-</p-slide><!--/slide:cover-->
+  <img src="img/qr-slides-mofs.svg" alt="QR Code for the presentation's link" style="height: 7em; margin-bottom: 1em" />
+  <a href="https://maxart2501.github.io/css-classless-style-talk/modena-fs/">maxart2501.github.io/css-classless-style-talk/modena-fs/</a>
+</p-slide>
+<p-slide class="title-slide">
+  <h1 class="center marker">Warning!</h1>
+  <div class="center blink marker" style="font-size: 400%; color: white"> CSS ahead!</div>
+</p-slide><!--/slide:cover-mofs-->
 <!--slide:history--><p-slide class="justify-start" style="--slide-bg: #1a1346">
   <h2 class="marker center" style="margin-top: -0.25em">How far we've come&hellip;</h2>
   <img src="img/how-far.webp" alt="Picture of a car and a person on the road at sunset" class="full-media" />
@@ -1346,6 +1343,59 @@ article :is(ul, ol) {
 <p-slide class="chrome"><span>120</span></p-slide>
 <p-slide class="firefox"><span>117</span></p-slide>
 <p-slide class="safari"><span>17.2</span></p-slide><!--/slide:has-nest-->
+<!--slide:colors--><p-slide class="title-slide">
+  <h1 class="center">What about&hellip; colors?</h1>
+</p-slide>
+<p-slide>
+  <h1 class="our-header from-left" style="font-size: 400%">color-mix</h1>
+</p-slide>
+<p-slide class="gradient-1 center" style="--brand-color: white; text-shadow: rgba(0, 0, 0, 0.533) 0px 0px 0.5em">
+  <p-fragment>
+    <h2 class="from-bottom marker no-margins">Darker/lighter colors</h2>
+    <pre style="width: min-content; margin: auto"><code class="language-css">h1 {
+  color: color-mix(in lab, var(--brand-color), black 20%);
+  background: color-mix(in lab, var(--brand-color), white 70%);
+}</code></pre>
+  </p-fragment>
+  <p-fragment>
+    <h2 class="from-bottom marker no-margins">Semi-transparent colors</h2>
+    <pre style="width: min-content; margin: auto"><code class="language-css">header {
+  background: color-mix(in lab, var(--brand-color), transparent 70%);
+}</code></pre>
+  </p-fragment>
+</p-slide>
+<p-slide class="chrome"><span>111</span></p-slide>
+<p-slide class="firefox"><span>113</span></p-slide>
+<p-slide class="safari"><span>16.2</span></p-slide>
+<p-slide>
+  <h1 class="our-header from-left" style="font-size: 300%">Relative colors</h1>
+</p-slide>
+<p-slide class="gradient-3">
+  <pre class="big self-center"><code class="language-css">:root {
+  accent-color: hsl(
+    from var(--brand-color),
+    calc(h + 90deg) s l
+  );
+}</code></pre>
+</p-slide>
+<p-slide class="gradient-1 center" style="--brand-color: white; text-shadow: rgba(0, 0, 0, 0.533) 0px 0px 0.5em">
+  <p-fragment>
+    <h2 class="from-bottom marker no-margins">Darker/lighter colors</h2>
+    <pre style="width: min-content; margin: auto"><code class="language-css">h1 {
+  color: hsl(from var(--brand-color), h s calc(l - 20%));
+  background: hsl(from var(--brand-color), h s calc(l + 20%));
+}</code></pre>
+  </p-fragment>
+  <p-fragment>
+    <h2 class="from-bottom marker no-margins">Semi-transparent colors</h2>
+    <pre style="width: min-content; margin: auto"><code class="language-css">header {
+  background: rgb(from var(--brand-color) r g b / 70%);
+}</code></pre>
+  </p-fragment>
+</p-slide>
+<p-slide class="chrome"><span>119</span></p-slide>
+<p-slide class="firefox"><span>128</p-slide>
+<p-slide class="safari"><span>16.4</span></p-slide><!--/slide:colors-->
 <!--slide:last-stuff--><p-slide>
   <p-fragment>
     <img
@@ -1462,7 +1512,7 @@ article :is(ul, ol) {
     </li>
   </ul>
 </p-slide><!--/slide:links-->
-<!--slide:the-end--><p-slide class="justify-start" style="--slide-bg: #130911">
+<!--slide:the-end-mofs--><p-slide class="justify-start" style="--slide-bg: #130911">
   <h1 class="flex column align-end from-right marker" style="margin-top: -0.3em; color: var(--slide-bg); line-height: 1">
     <span>That's all,</span>
     <span>folks&hellip;</span>
@@ -1471,8 +1521,8 @@ article :is(ul, ol) {
 </p-slide>
 <p-slide class="gradient-4">
   <h3 class="center final-link">
-    <a href="https://maxart2501.github.io/css-classless-style-talk/css-day/"> maxart2501.github.io/css-classless-style-talk/css-day/ </a>
-    <img src="img/qr-slides.svg" alt="QR Code for the presentation's link" />
+    <a href="https://maxart2501.github.io/css-classless-style-talk/modena-fs/"> maxart2501.github.io/css-classless-style-talk/modena-fs/ </a>
+    <img src="img/qr-slides-mofs.svg" alt="QR Code for the presentation's link" />
   </h3>
 </p-slide>
 <p-slide class="gradient-4">
@@ -1480,7 +1530,7 @@ article :is(ul, ol) {
 @each $question of conf.$questions {
   answer: $question;
 }</code></pre>
-</p-slide><!--/slide:the-end-->
+</p-slide><!--/slide:the-end-mofs-->
 </p-deck>
     <div role="progressbar" class="presentation-progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" title="Presentation progress"></div>
     <div role="toolbar" class="presentation-toolbar">
