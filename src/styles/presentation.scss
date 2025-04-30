@@ -144,9 +144,8 @@ p-fragment.landing {
 
   > img {
     height: 3em;
-    border: .5em solid white;
-    border-radius: .5em;
     align-self: flex-start;
+    filter: drop-shadow(0 0 .125em white) drop-shadow(0 0 .125em white)
   }
 
   h4 {
@@ -320,7 +319,7 @@ a {
   > :is(img, video) {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
   }
 }
 
